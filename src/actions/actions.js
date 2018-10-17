@@ -6,7 +6,7 @@ let userUrl = "http://localhost:8080/users";
 export const UserLogin = (email, password) => {
   return dispatch => {
     return axios
-      .post(userUrl + "/signin", { email: email, password: password })
+      .post(userUrl + "/login", { email: email, password: password })
       .then(response => {
         dispatch(userLoginSuccess(response.data.email, response.data._id));
       })
