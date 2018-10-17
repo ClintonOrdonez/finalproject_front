@@ -17,6 +17,7 @@ const Login = props => {
       <h3>Login</h3>
       <div className="form-group">
         <input
+          type="text"
           className="form-control"
           placeholder="Email"
           ref={u => {
@@ -26,6 +27,7 @@ const Login = props => {
       </div>
       <div className="form-group">
         <input
+          type="password"
           className="form-control"
           placeholder="Password"
           ref={p => {

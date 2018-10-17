@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGOUT } from "./types";
+import { USER_LOGIN, USER_LOGOUT, USER_SIGNUP } from "./types";
 import axios from "axios";
 
 let userUrl = "http://localhost:8080/users";
@@ -29,3 +29,5 @@ export const UserLogout = () => {
     type: USER_LOGOUT
   };
 };
+
+export const UserSignup = () => {};

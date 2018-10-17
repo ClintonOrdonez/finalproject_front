@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
-import { Home, Header, Login, Logout } from "./components";
+import { Home, Header, Login, Logout, Signup } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -22,10 +22,11 @@ const App = props => (
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
+              <Route path="/signup" component={Signup} />
               <Route
                 render={() => (
                   <div>
-                    page not found
+                    <h3>Page Not Found</h3>
                     <br />
                     <span
                       className="notfound"

@@ -24,6 +24,12 @@ const Header = props => (
           </NavLink>
         )}
 
+        {props.token === null && (
+          <NavLink activeClassName="active" className="nav-link" to="/signup">
+            Signup
+          </NavLink>
+        )}
+
         {props.token && (
           <NavLink activeClassName="active" className="nav-link" to="/logout">
             Logout {props.email}
