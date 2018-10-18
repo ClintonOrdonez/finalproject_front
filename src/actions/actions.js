@@ -30,4 +30,15 @@ export const UserLogout = () => {
   };
 };
 
-export const UserSignup = () => {};
+export const UserSignup = (email, password) => {
+  return dispatch => {
+    return axios
+      .post(userUrl + "/signup", { email: email, password: password })
+      .then(response => {
+        dispatch(UserLogin(email, password));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};

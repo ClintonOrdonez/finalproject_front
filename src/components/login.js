@@ -2,6 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { UserLogin } from "../actions/actions";
 
+const mapStateToProps = state => {
+  return {
+    token: state.token,
+    email: state.email
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     onLogin: (email, password) => dispatch(UserLogin(email, password))
@@ -51,6 +58,6 @@ const Login = props => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);

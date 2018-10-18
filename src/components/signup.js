@@ -19,6 +19,7 @@ const mapDispatchToProps = dispatch => {
 const Signup = props => {
   let email;
   let password;
+  let confirmPassword;
 
   return (
     <div>
@@ -28,8 +29,8 @@ const Signup = props => {
           type="text"
           className="form-control"
           placeholder="Email"
-          ref={u => {
-            email = u;
+          ref={e => {
+            email = e;
           }}
         />
       </div>
@@ -47,9 +48,9 @@ const Signup = props => {
         <input
           type="password"
           className="form-control"
-          placeholder="Reenter Password"
-          ref={p => {
-            password = p;
+          placeholder="Confirm Password"
+          ref={cP => {
+            confirmPassword = cP;
           }}
         />
       </div>
@@ -58,8 +59,13 @@ const Signup = props => {
         <button
           className="btn btn-secondary"
           onClick={() => {
-            props.onSignup(email.value, password.value);
-            props.history.push("/");
+            if (password.value === confirmPassword.value) {
+              props.onSignup(email.value, password.value);
+              alert("Signup successful; logging in now!");
+              props.history.push("/");
+            } else {
+              alert("Passwords do not match.");
+            }
           }}
         >
           Submit
