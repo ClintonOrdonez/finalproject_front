@@ -9,14 +9,14 @@ a:hover {
   color: #fff;
 }
 
-/* Custom default button */
+/* Custom default Submit button */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
+  color: rgb(252, 6, 6);
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: 0.05rem solid #fff;
+  background-color: rgb(0, 0, 0);
+  border: 0.05rem solid rgb(51, 51, 51);
 }
 
 /*
@@ -27,7 +27,13 @@ html,
 body {
   height: 100vh;
   /* background-color: #333; */
-  background: linear-gradient(90deg, #111, #333 15%, #333 85%, #111);
+  background: linear-gradient(
+    90deg,
+    rgb(250, 0, 0),
+    rgb(0, 0, 0) 15%,
+    rgb(0, 0, 0) 85%,
+    rgb(255, 0, 0)
+  );
 
   font-size: 20px;
 }
@@ -61,14 +67,14 @@ body {
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255);
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, 0.25);
+  border-bottom-color: rgba(236, 17, 17, 0.25);
 }
 
 .nav-masthead .nav-link + .nav-link {
@@ -76,8 +82,8 @@ body {
 }
 
 .nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: rgb(255, 0, 0);
+  border-bottom-color: rgba(236, 17, 17, 0.25);
 }
 
 @media (min-width: 48em) {
