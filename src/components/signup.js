@@ -22,6 +22,7 @@ const Signup = props => {
   let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
   let password;
+  let passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/;
   let validPassword = false;
   let confirmPassword;
   let passwordMatch = false;
@@ -72,7 +73,13 @@ const Signup = props => {
           ref={p => {
             password = p;
           }}
-          onBlur={() => {}}
+          onBlur={() => {
+            if (password.value.match(passwordRegex)) {
+              console.log("strong password")
+            } else {
+              console.log("change password");
+            }
+          }}
         />
       </div>
 
