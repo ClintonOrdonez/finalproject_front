@@ -19,6 +19,7 @@ const mapDispatchToProps = dispatch => {
 
 const Signup = props => {
   let email;
+  let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
   let password;
   let validPassword = false;
@@ -38,15 +39,19 @@ const Signup = props => {
             email = e;
           }}
           onBlur={() => {
-            props.onCheckEmail(email.value).then(result => {
-              if (result.data.count === 1) {
-                alert(
-                  "Email already in use; provide a different email or login."
-                );
-              } else {
-                validEmail = true;
-              }
-            });
+            if (email.value.match(emailRegex)) {
+              props.onCheckEmail(email.value).then(result => {
+                if (result.data.count === 0) {
+                  validEmail = true;
+                } else {
+                  console.log(
+                    "Email already in use; provide a different email or login."
+                  );
+                }
+              });
+            } else {
+              console.log("Not a valid email.");
+            }
           }}
         />
         <span />
@@ -88,10 +93,10 @@ const Signup = props => {
           onClick={() => {
             if (password.value === confirmPassword.value) {
               props.onSignup(email.value, password.value);
-              alert("Signup successful; logging in now.");
+              console.log("Signup successful; logging in now.");
               props.history.push("/");
             } else {
-              alert("Passwords do not match.");
+              console.log("Passwords do not match.");
             }
           }}
         >
