@@ -74,6 +74,7 @@ const Signup = props => {
             password = p;
           }}
           onBlur={() => {
+
             if (password.value.match(passwordRegex)) {
               console.log("strong password")
             } else {
