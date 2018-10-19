@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { UserSignup } from "../actions/actions";
+import { UserSignup, CheckEmail } from "../actions/actions";
 
 // This was to test whether the page would display and properly navigate
 // const Signup = props => (
@@ -12,18 +12,24 @@ import { UserSignup } from "../actions/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignup: (email, password) => dispatch(UserSignup(email, password))
+    onSignup: (email, password) => dispatch(UserSignup(email, password)),
+    onCheckEmail: email => dispatch(CheckEmail(email))
   };
 };
 
 const Signup = props => {
   let email;
+  let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let validEmail = false;
   let password;
+  let validPassword = false;
   let confirmPassword;
+  let passwordMatch = false;
 
   return (
     <div>
       <h3>Signup</h3>
+
       <div className="form-group">
         <input
           type="text"
@@ -32,8 +38,32 @@ const Signup = props => {
           ref={e => {
             email = e;
           }}
+          onBlur={() => {
+            if (email.value.match(emailRegex)) {
+              props.onCheckEmail(email.value).then(result => {
+                if (result.data.count === 0) {
+                  validEmail = true;
+                } else {
+                  console.log(
+                    "Email already in use; provide a different email or login."
+                  );
+                }
+              });
+            } else {
+              console.log("Not a valid email.");
+            }
+          }}
         />
+        <span />
       </div>
+
+      <div className="form-group">
+        <h6>
+          Passwords must be at least 8 characters, have 1 uppercase letter, 1
+          lowercase letter, and 1 number or 1 non-alphanumeric character.
+        </h6>
+      </div>
+
       <div className="form-group">
         <input
           type="password"
@@ -42,8 +72,10 @@ const Signup = props => {
           ref={p => {
             password = p;
           }}
+          onBlur={() => {}}
         />
       </div>
+
       <div className="form-group">
         <input
           type="password"
@@ -61,10 +93,10 @@ const Signup = props => {
           onClick={() => {
             if (password.value === confirmPassword.value) {
               props.onSignup(email.value, password.value);
-              alert("Signup successful; logging in now!");
+              console.log("Signup successful; logging in now.");
               props.history.push("/");
             } else {
-              alert("Passwords do not match.");
+              console.log("Passwords do not match.");
             }
           }}
         >

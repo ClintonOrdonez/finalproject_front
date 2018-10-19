@@ -1,12 +1,25 @@
 import { USER_LOGIN, USER_LOGOUT } from "./types";
 import axios from "axios";
 
-let userUrl = "http://localhost:8080/users";
+let userURL = "http://localhost:8080/users";
+
+export const UserSignup = (email, password) => {
+  return dispatch => {
+    return axios
+      .post(userURL + "/signup", { email: email, password: password })
+      .then(response => {
+        dispatch(UserLogin(email, password));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};
 
 export const UserLogin = (email, password) => {
   return dispatch => {
     return axios
-      .post(userUrl + "/login", { email: email, password: password })
+      .post(userURL + "/login", { email: email, password: password })
       .then(response => {
         dispatch(userLoginSuccess(response.data.email, response.data._id));
       })
@@ -30,12 +43,14 @@ export const UserLogout = () => {
   };
 };
 
-export const UserSignup = (email, password) => {
+// This function will check if an email is in the database
+export const CheckEmail = email => {
   return dispatch => {
     return axios
-      .post(userUrl + "/signup", { email: email, password: password })
+      .post(userURL + "/check", { email: email })
       .then(response => {
-        dispatch(UserLogin(email, password));
+        console.log(response);
+        return response;
       })
       .catch(error => {
         throw error;
