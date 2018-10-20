@@ -49,7 +49,7 @@ export const CheckEmail = email => {
     return axios
       .post(userURL + "/check", { email: email })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         return response;
       })
       .catch(error => {
