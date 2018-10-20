@@ -19,10 +19,9 @@ const mapDispatchToProps = dispatch => {
 
 const Signup = props => {
   let email;
-  let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
   let password;
-  let passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/;
+  // let passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/;
   let validPassword = false;
   let confirmPassword;
   let passwordMatch = false;
@@ -40,10 +39,12 @@ const Signup = props => {
             email = e;
           }}
           onBlur={() => {
+            let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (email.value.match(emailRegex)) {
               props.onCheckEmail(email.value).then(result => {
                 if (result.data.count === 0) {
                   validEmail = true;
+                  console.log("validEmail: " + validEmail);
                 } else {
                   console.log(
                     "Email already in use; provide a different email or login."
@@ -73,11 +74,27 @@ const Signup = props => {
           ref={p => {
             password = p;
           }}
+          // onBlur={() => {
+          //   if (password.value.match(passwordRegex)) {
+          //     validPassword = true;
+          //     console.log("validPassword: " + validPassword);
+          //   } else {
+          //     console.log("Password does not fulfill requirements.");
+          //   }
+          // }}
           onBlur={() => {
-            if (password.value.match(passwordRegex)) {
-              console.log("strong password")
+            let hasUpperCase = /[A-Z]/.test(password.value);
+            let hasLowerCase = /[a-z]/.test(password.value);
+            let hasNumber = /\d/.test(password.value);
+            let hasNonAlphaNumeric = /\W/.test(password.value);
+            if (
+              password.value.length >= 8 &&
+              hasUpperCase + hasLowerCase + hasNumber + hasNonAlphaNumeric >= 3
+            ) {
+              validPassword = true;
+              console.log("validPassword: " + validPassword);
             } else {
-              console.log("change password");
+              console.log("Password does not fulfill requirements.");
             }
           }}
         />
