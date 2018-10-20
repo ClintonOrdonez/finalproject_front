@@ -67,10 +67,13 @@ const Signup = props => {
 
       {/* Password Requirements heading */}
       <div className="form-group">
-        <h6>
-          Passwords must be at least 8 characters, have 1 uppercase letter, 1
-          lowercase letter, and 1 number or 1 non-alphanumeric character.
-        </h6>
+        <h6>Passwords must contain the following:</h6>
+        <ul>
+          <li>8 or more characters</li>
+          <li>1 uppercase letter</li>
+          <li>1 lowercase letter</li>
+          <li>1 number OR 1 non-alphanumeric character</li>
+        </ul>
       </div>
 
       {/* Password input */}
