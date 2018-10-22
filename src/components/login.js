@@ -47,7 +47,7 @@ const Login = props => {
           className="btn btn-secondary"
           onClick={() => {
             props.onLogin(email.value, password.value);
-            props.history.push("/");
+            props.history.push("/game");
           }}
         >
           Submit

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
-import { Home, Header, Login, Logout, Signup } from "./components";
+import { Home, Header, Login, Logout, Signup, Game } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -24,6 +24,7 @@ const App = props => (
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
               <Route path="/signup" component={Signup} />
+              <Route path="/game" component={Game} />
               <Route
                 render={() => (
                   <div>

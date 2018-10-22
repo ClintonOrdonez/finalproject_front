@@ -35,6 +35,10 @@ const Header = props => (
             Logout {props.email}
           </NavLink>
         )}
+
+        <NavLink exact activeClassName="active" className="nav-link" to="/">
+
+        </NavLink>
       </nav>
     </div>
   </header>
