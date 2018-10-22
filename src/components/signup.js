@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { UserSignup, CheckEmail } from "../actions/actions";
 
