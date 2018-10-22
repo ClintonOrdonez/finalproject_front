@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { UserSignup, CheckEmail } from "../actions/actions";
 
@@ -95,22 +95,50 @@ const Signup = props => {
           //     console.log("Password does not fulfill requirements.");
           //   }
           // }}
-          onBlur={() => {
+          onChange={() => {
             // Separate Regex variables to test if password meets minimum requirements
             let hasUpperCase = /[A-Z]/.test(password.value);
             let hasLowerCase = /[a-z]/.test(password.value);
             let hasNumber = /\d/.test(password.value);
             let hasNonAlphaNumeric = /\W/.test(password.value);
 
+            console.log("PASSWORD CHANGE");
+
+            if (password.value.length >= 8) {
+              console.log("length: ✅");
+            } else {
+              console.log("length: ❎");
+            }
+
+            if (hasUpperCase === true) {
+              console.log("hasUpperCase: ✅");
+            } else {
+              console.log("hasUpperCase: ❎");
+            }
+
+            if (hasLowerCase === true) {
+              console.log("hasLowerCase: ✅");
+            } else {
+              console.log("hasLowerCase: ❎");
+            }
+
+            if (hasNumber === true || hasNonAlphaNumeric === true) {
+              console.log("hasNumber or hasNonAlphaNumeric: ✅");
+            } else {
+              console.log("hasNumber or hasNonAlphaNumeric: ❎");
+            }
+
             if (
               password.value.length >= 8 &&
-              hasUpperCase + hasLowerCase + hasNumber + hasNonAlphaNumeric >= 3
+              hasUpperCase === true &&
+              hasLowerCase === true &&
+              (hasNumber === true || hasNonAlphaNumeric === true)
             ) {
               validPassword = true;
-              console.log("validPassword: " + validPassword);
+              // console.log("validPassword: " + validPassword);
             } else {
               validPassword = false;
-              console.log("Password does not fulfill requirements.");
+              // console.log("Password does not fulfill requirements.");
             }
           }}
         />
