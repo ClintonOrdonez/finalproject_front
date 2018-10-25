@@ -1,0 +1,133 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default Submit button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: rgb(252, 6, 6);
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: rgb(0, 0, 0);
+  border: 0.05rem solid rgb(51, 51, 51);
+}
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100vh;
+  /* background-color: #333; */
+  background: linear-gradient(
+    90deg,
+    rgb(250, 0, 0),
+    rgb(0, 0, 0) 15%,
+    rgb(0, 0, 0) 85%,
+    rgb(255, 0, 0)
+  );
+
+  font-size: 20px;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: red;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 41, 221, 0.5);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 0, 0);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: rgb(255, 0, 0);
+  border-bottom-color: rgba(255, 0, 0);
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+}
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mainSection {
+  width: 75vw;
+  max-width: 40em;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(252, 0, 0);
+  color: rgb(53, 0, 50);
+}
+
+.notfound {
+  font-size: 8em;
+}
