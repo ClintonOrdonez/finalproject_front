@@ -32,7 +32,7 @@ const Header = props => (
 
         {props.token && (
           <NavLink activeClassName="active" className="nav-link" to="/logout">
-            Logout {props.email}
+            Logout
           </NavLink>
         )}
       </nav>
