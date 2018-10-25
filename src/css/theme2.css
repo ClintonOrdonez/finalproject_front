@@ -47,6 +47,8 @@ body {
   justify-content: center;
   color: red;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 41, 221, 0.5);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .cover-container {
@@ -93,36 +95,4 @@ body {
   .nav-masthead {
     float: right;
   }
-}
-
-/*
- * Cover
- */
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: 0.75rem 1.25rem;
-  font-weight: 700;
-}
-
-/*
- * Footer
- */
-.mastfoot {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.mainSection {
-  width: 75vw;
-  max-width: 40em;
-}
-
-.badge-primary {
-  color: white;
-  background-color: #111;
-}
-
-.notfound {
-  font-size: 8em;
 }

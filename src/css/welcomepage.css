@@ -98,6 +98,7 @@ body {
 /*
  * Cover
  */
+
 .cover {
   padding: 0 1.5rem;
 }
@@ -109,6 +110,7 @@ body {
 /*
  * Footer
  */
+
 .mastfoot {
   color: rgba(255, 255, 255, 0.5);
 }
