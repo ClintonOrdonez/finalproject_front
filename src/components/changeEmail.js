@@ -47,7 +47,7 @@ const changeEmail = props => {
                   } else {
                     validNewEmail = false;
                     document.getElementById("newEmail").innerHTML =
-                      "Email already in use; provide a different email or login.";
+                      "Email already in use; provide a different email.";
                   }
                 });
               } else {
