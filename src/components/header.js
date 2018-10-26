@@ -19,7 +19,12 @@ const Header = props => (
         </NavLink>
 
         {props.token === null && (
-          <NavLink activeClassName="active" className="nav-link" to="/login">
+          <NavLink
+            activeClassName="active"
+            //you can add the class jeromesMastHead like this: "nav-link jeromesMastHead"
+            className="nav-link"
+            to="/login"
+          >
             Login
           </NavLink>
         )}

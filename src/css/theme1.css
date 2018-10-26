@@ -47,7 +47,7 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   color: rgb(0, 139, 252);
-  text-shadow: 0 0.05rem 0.1rem rgb(0, 255, 13);
+  /* text-shadow: 0 0.05rem 0.1rem rgb(0, 255, 13); */
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
@@ -73,6 +73,19 @@ body {
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
 }
+/*the jeromesH3CSS class is called here to change that element's text to black
+/* .jeromesH3CSS {
+  color: black;
+} */
+
+/*this was used to change the text of the Login navigation element to the color from theme2
+/* .nav-masthead .jeromesMastHead {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
+} */
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
@@ -120,7 +133,7 @@ body {
   max-width: 40em;
 }
 
-input[type="text"] {
+/* input[type="text"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -128,7 +141,7 @@ input[type="text"] {
   border: 2px solid rgb(0, 0, 0);
   background-color: rgb(0, 139, 252);
   color: rgb(53, 0, 50);
-}
+} */
 
 .notfound {
   font-size: 8em;

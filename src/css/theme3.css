@@ -46,8 +46,9 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   color: red;
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 41, 221, 0.5);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* text-shadow: 0 0.05rem 0.1rem rgba(0, 41, 221, 0.5); */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .cover-container {
