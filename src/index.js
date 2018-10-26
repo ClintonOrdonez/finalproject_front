@@ -2,7 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/theme1.css";
-import { Home, Header, Login, Logout, Signup } from "./components";
+import {
+  ProtectedRoute,
+  UnprotectedRoute,
+  Home,
+  Header,
+  Login,
+  Logout,
+  Signup,
+  ChangeEmail,
+  ChangePassword
+} from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -21,9 +31,14 @@ const App = props => (
           <main className="inner cover mainSection">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/logout" component={Logout} />
-              <Route path="/signup" component={Signup} />
+              <ProtectedRoute path="/changeEmail" component={ChangeEmail} />
+              <ProtectedRoute
+                path="/changePassword"
+                component={ChangePassword}
+              />
+              <ProtectedRoute path="/logout" component={Logout} />
+              <UnprotectedRoute path="/login" component={Login} />
+              <UnprotectedRoute path="/signup" component={Signup} />
               <Route
                 render={() => (
                   <div>

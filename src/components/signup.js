@@ -2,14 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { UserSignup, CheckEmail } from "../actions/actions";
 
-// This was to test whether the page would display and properly navigate
-// const Signup = props => (
-//   <div>
-//     <h3 className="cover-heading">Signup</h3>
-//     <p className="lead">Signup can be navigated succesfully.</p>
-//   </div>
-// );
-
 const mapDispatchToProps = dispatch => {
   return {
     onSignup: (email, password) => dispatch(UserSignup(email, password)),
@@ -62,7 +54,6 @@ const Signup = props => {
             }
           }}
         />
-        <span />
         <span id="email">
           <br />
         </span>

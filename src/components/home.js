@@ -12,11 +12,12 @@ const mapStateToProps = state => {
 const Home = props => (
   <div>
     <h3 className="cover-heading">Home</h3>
-    {props.token && <h3>Welcome {props.email}!</h3>}
+
     <p className="lead">
       This is the landing page for our project. We will create an introduction
       here.
     </p>
+    {props.token && <h3>Welcome {props.email}!</h3>}
   </div>
 );
 
