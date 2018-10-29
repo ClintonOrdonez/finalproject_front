@@ -61,6 +61,14 @@ export const CheckEmail = email => {
 // This function will check if an email has a matching password
 export const CheckPassword = (email, password) => {
   return dispatch => {
-    return axios.post(userURL + "");
+    return axios
+      .post(userURL + "/checkPassword", { email: email, password: password })
+      .then(response => {
+        //console.log(response);
+        return response;
+      })
+      .catch(error => {
+        throw error;
+      });
   };
 };
