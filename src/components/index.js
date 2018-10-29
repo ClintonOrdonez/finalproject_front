@@ -5,8 +5,8 @@ import Header from "./header";
 import Login from "./login";
 import Logout from "./logout";
 import Signup from "./signup";
-import ChangeEmail from "./changeEmail";
-import ChangePassword from "./changePassword";
+import UpdateEmail from "./updateEmail";
+import UpdatePassword from "./updatePassword";
 
 export {
   ProtectedRoute,
@@ -16,6 +16,6 @@ export {
   Login,
   Logout,
   Signup,
-  ChangeEmail,
-  ChangePassword
+  UpdateEmail,
+  UpdatePassword
 };

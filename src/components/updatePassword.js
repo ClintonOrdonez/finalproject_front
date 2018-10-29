@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const changePassword = props => {
+const updatePassword = props => {
   let oldPassword;
   let newPassword;
   let validNewPassword = false;
@@ -23,8 +23,9 @@ const changePassword = props => {
 
   return (
     <div>
-      <h3>Change Password</h3>
+      <h3>Update Password</h3>
 
+      {/* Old Password input */}
       <div className="form-group">
         <input
           type="password"
@@ -39,6 +40,7 @@ const changePassword = props => {
         </span>
       </div>
 
+      {/* New Password input */}
       <div className="form-group">
         <input
           type="password"
@@ -141,6 +143,7 @@ const changePassword = props => {
         </table>
       </div>
 
+      {/* Confirm New Password button */}
       <div className="form-group">
         <input
           type="password"
@@ -155,6 +158,7 @@ const changePassword = props => {
         </span>
       </div>
 
+      {/* Submit button */}
       <div className="form-group">
         <button
           className="btn btn-secondary"
@@ -172,4 +176,4 @@ const changePassword = props => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(changePassword);
+)(updatePassword);

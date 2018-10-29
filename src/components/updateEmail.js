@@ -14,14 +14,14 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const changeEmail = props => {
+const updateEmail = props => {
   let newEmail;
   let validNewEmail = false;
   let password;
 
   return (
     <div>
-      <h3>Change Email</h3>
+      <h3>Update Email</h3>
 
       <div className="form-group">
         <span>Current email: {props.email}</span>
@@ -58,7 +58,7 @@ const changeEmail = props => {
             } else {
               validNewEmail = false;
               document.getElementById("newEmail").innerHTML =
-                "Cannot change email to current email.";
+                "Cannot update email to current email.";
             }
             // } else {
             //   document.getElementById("newEmail").innerHTML = <br />;
@@ -98,4 +98,4 @@ const changeEmail = props => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(changeEmail);
+)(updateEmail);

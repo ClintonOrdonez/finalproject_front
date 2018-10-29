@@ -10,8 +10,8 @@ import {
   Login,
   Logout,
   Signup,
-  ChangeEmail,
-  ChangePassword
+  UpdateEmail,
+  UpdatePassword
 } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -31,10 +31,10 @@ const App = props => (
           <main className="inner cover mainSection">
             <Switch>
               <Route exact path="/" component={Home} />
-              <ProtectedRoute path="/changeEmail" component={ChangeEmail} />
+              <ProtectedRoute path="/updateEmail" component={UpdateEmail} />
               <ProtectedRoute
-                path="/changePassword"
-                component={ChangePassword}
+                path="/updatePassword"
+                component={UpdatePassword}
               />
               <ProtectedRoute path="/logout" component={Logout} />
               <UnprotectedRoute path="/login" component={Login} />

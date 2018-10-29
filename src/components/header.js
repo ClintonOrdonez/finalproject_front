@@ -34,9 +34,9 @@ const Header = props => (
           <NavLink
             activeClassName="active"
             className="nav-link"
-            to="/changeEmail"
+            to="/updateEmail"
           >
-            [Change Email]
+            [Update Email]
           </NavLink>
         )}
 
@@ -44,9 +44,9 @@ const Header = props => (
           <NavLink
             activeClassName="active"
             className="nav-link"
-            to="/changePassword"
+            to="/updatePassword"
           >
-            [Change Password]
+            [Update Password]
           </NavLink>
         )}
 
