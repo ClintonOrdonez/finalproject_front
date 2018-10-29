@@ -47,7 +47,7 @@ export const UserLogout = () => {
 export const CheckEmail = email => {
   return dispatch => {
     return axios
-      .post(userURL + "/check", { email: email })
+      .post(userURL + "/checkEmail", { email: email })
       .then(response => {
         // console.log(response);
         return response;
@@ -55,5 +55,12 @@ export const CheckEmail = email => {
       .catch(error => {
         throw error;
       });
+  };
+};
+
+// This function will check if an email has a matching password
+export const CheckPassword = (email, password) => {
+  return dispatch => {
+    return axios.post(userURL + "");
   };
 };

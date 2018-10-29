@@ -45,7 +45,7 @@ const Signup = props => {
                 } else {
                   validEmail = false;
                   document.getElementById("email").innerHTML =
-                    "Email already in use; provide a different email or login.";
+                    "Email already in use; provide a different email or login to existing account.";
                 }
               });
             } else {
