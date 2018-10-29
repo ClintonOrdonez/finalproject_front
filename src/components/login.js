@@ -1,14 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { UserLogin } from "../actions/actions";
-import "../css/theme1.css";
-
-const mapStateToProps = state => {
-  return {
-    token: state.token,
-    email: state.email
-  };
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -28,8 +20,8 @@ const Login = props => {
           type="text"
           className="form-control"
           placeholder="Email"
-          ref={u => {
-            email = u;
+          ref={e => {
+            email = e;
           }}
         />
       </div>
@@ -59,6 +51,6 @@ const Login = props => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login);

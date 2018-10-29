@@ -2,14 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { UserSignup, CheckEmail } from "../actions/actions";
 
-// This was to test whether the page would display and properly navigate
-// const Signup = props => (
-//   <div>
-//     <h3 className="cover-heading">Signup</h3>
-//     <p className="lead">Signup can be navigated succesfully.</p>
-//   </div>
-// );
-
 const mapDispatchToProps = dispatch => {
   return {
     onSignup: (email, password) => dispatch(UserSignup(email, password)),
@@ -62,19 +54,48 @@ const Signup = props => {
             }
           }}
         />
-        <span />
         <span id="email">
           <br />
         </span>
       </div>
 
-      {/* Password Requirements heading */}
+      {/* Password Requirements table */}
       <div className="form-group">
         <h6>Passwords have the following requirements:</h6>
-        <h6 id="requirement1">8 or more characters</h6>
-        <h6 id="requirement2">1 uppercase letter</h6>
-        <h6 id="requirement3">1 lowercase letter</h6>
-        <h6 id="requirement4">1 number OR 1 non-alphanumeric character</h6>
+        <table align="center">
+          <tr>
+            <td>
+              <span id="requirement1" role="img" aria-label="1">
+                1️⃣&nbsp;
+              </span>
+            </td>
+            <td align="left">8 or more characters</td>
+          </tr>
+          <tr>
+            <td>
+              <span id="requirement2" role="img" aria-label="2">
+                2️⃣&nbsp;
+              </span>
+            </td>
+            <td align="left">1 uppercase letter</td>
+          </tr>
+          <tr>
+            <td>
+              <span id="requirement3" role="img" aria-label="3">
+                3️⃣&nbsp;
+              </span>
+            </td>
+            <td align="left">1 lowercase letter</td>
+          </tr>
+          <tr>
+            <td>
+              <span id="requirement4" role="img" aria-label="4">
+                4️⃣&nbsp;
+              </span>
+            </td>
+            <td align="left">1 number OR 1 non-alphanumeric character</td>
+          </tr>
+        </table>
       </div>
 
       {/* Password input */}
@@ -94,35 +115,27 @@ const Signup = props => {
             let hasNonAlphaNumeric = /\W/.test(password.value);
 
             if (password.value.length >= 8) {
-              document.getElementById("requirement1").innerHTML =
-                "🆗 8 or more characters 🆗";
+              document.getElementById("requirement1").innerHTML = "✅&nbsp;";
             } else {
-              document.getElementById("requirement1").innerHTML =
-                "❌ 8 or more characters ❌";
+              document.getElementById("requirement1").innerHTML = "🔴&nbsp;";
             }
 
             if (hasUpperCase === true) {
-              document.getElementById("requirement2").innerHTML =
-                "🆗 1 uppercase letter 🆗";
+              document.getElementById("requirement2").innerHTML = "✅&nbsp;";
             } else {
-              document.getElementById("requirement2").innerHTML =
-                "❌ 1 uppercase letter ❌";
+              document.getElementById("requirement2").innerHTML = "🔴&nbsp;";
             }
 
             if (hasLowerCase === true) {
-              document.getElementById("requirement3").innerHTML =
-                "🆗 1 lowercase letter 🆗";
+              document.getElementById("requirement3").innerHTML = "✅&nbsp;";
             } else {
-              document.getElementById("requirement3").innerHTML =
-                "❌ 1 lowercase letter ❌";
+              document.getElementById("requirement3").innerHTML = "🔴&nbsp;";
             }
 
             if (hasNumber === true || hasNonAlphaNumeric === true) {
-              document.getElementById("requirement4").innerHTML =
-                "🆗 1 number OR 1 non-alphanumeric character 🆗";
+              document.getElementById("requirement4").innerHTML = "✅&nbsp;";
             } else {
-              document.getElementById("requirement4").innerHTML =
-                "❌ 1 number OR 1 non-alphanumeric character ❌";
+              document.getElementById("requirement4").innerHTML = "🔴&nbsp;";
             }
 
             if (
@@ -190,7 +203,7 @@ const Signup = props => {
               props.history.push("/");
             } else {
               document.getElementById("submit").innerHTML =
-                "The above requirements have not been met.";
+                "Please satisfy all the above fields.";
             }
           }}
         >

@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
-<<<<<<< HEAD
-import "./css/welcomepage.css";
-import { Home, Header, Login, Logout, Signup } from "./components";
-=======
 import "./css/theme1.css";
 import {
   ProtectedRoute,
@@ -17,7 +13,6 @@ import {
   ChangeEmail,
   ChangePassword
 } from "./components";
->>>>>>> de684ab319717de38ab23d597c4e395156c80090
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
