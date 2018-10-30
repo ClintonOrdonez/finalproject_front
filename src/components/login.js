@@ -30,17 +30,17 @@ const Login = props => {
           ref={e => {
             email = e;
           }}
-          onChange={() => {
-            props.onCheckEmail(email.value).then(result => {
-              if (result.data.count === 1) {
-                validEmail = true;
-              } else {
-                validEmail = false;
-              }
-              validPassword = false;
-              document.getElementById("password").value = "";
-            });
-          }}
+          // onChange={() => {
+          //   props.onCheckEmail(email.value).then(result => {
+          //     if (result.data.count === 1) {
+          //       validEmail = true;
+          //     } else {
+          //       validEmail = false;
+          //     }
+          //     validPassword = false;
+          //     document.getElementById("password").value = "";
+          //   });
+          // }}
         />
       </div>
 
@@ -54,11 +54,11 @@ const Login = props => {
           ref={p => {
             password = p;
           }}
-          onChange={() => {
-            props.onCheckPassword(email.value, password.value).then(result => {
-              validPassword = result.data;
-            });
-          }}
+          // onChange={() => {
+          //   props.onCheckPassword(email.value, password.value).then(result => {
+          //     validPassword = result.data;
+          //   });
+          // }}
         />
       </div>
 
@@ -66,14 +66,33 @@ const Login = props => {
       <div className="form-group">
         <button
           className="btn btn-secondary"
+          onMouseOver={() => {
+            // Check if email is in database
+            props.onCheckEmail(email.value).then(result => {
+              if (result.data.count === 1) {
+                validEmail = true;
+              } else {
+                validEmail = false;
+              }
+            });
+
+            // Check to see if password is valid
+            props.onCheckPassword(email.value, password.value).then(result => {
+              validPassword = result.data;
+            });
+            console.log(validEmail);
+            console.log(validPassword);
+            console.log(password.value);
+          }}
           onClick={() => {
+            // If both email and password are valid, submit data to login
             if (validEmail === true && validPassword === true) {
-              alert("Logging in now.");
+              // alert("Logging in now.");
               props.onLogin(email.value, password.value);
               props.history.push("/");
             } else {
               document.getElementById("submit").innerHTML =
-                "Please check email and password.";
+                "Incorrect email and/or password.";
             }
           }}
         >
