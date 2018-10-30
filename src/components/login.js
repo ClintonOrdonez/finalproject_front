@@ -15,7 +15,7 @@ const Login = props => {
   let email;
   let validEmail = false;
   let password;
-  let validPassword;
+  let validPassword = false;
 
   return (
     <div>
@@ -37,7 +37,8 @@ const Login = props => {
               } else {
                 validEmail = false;
               }
-              // console.log(validEmail);
+              validPassword = false;
+              document.getElementById("password").value = "";
             });
           }}
         />
@@ -46,6 +47,7 @@ const Login = props => {
       {/* Password input */}
       <div className="form-group">
         <input
+          id="password"
           type="password"
           className="form-control"
           placeholder="Password"
@@ -55,7 +57,6 @@ const Login = props => {
           onChange={() => {
             props.onCheckPassword(email.value, password.value).then(result => {
               validPassword = result.data;
-              // console.log(validPassword);
             });
           }}
         />
