@@ -55,7 +55,7 @@ const Login = props => {
           onChange={() => {
             props.onCheckPassword(email.value, password.value).then(result => {
               validPassword = result.data;
-              console.log(validPassword);
+              // console.log(validPassword);
             });
           }}
         />
