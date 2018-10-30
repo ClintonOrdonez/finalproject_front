@@ -82,7 +82,6 @@ const Login = props => {
             });
             console.log(validEmail);
             console.log(validPassword);
-            console.log(password.value);
           }}
           onClick={() => {
             // If both email and password are valid, submit data to login
