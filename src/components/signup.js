@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { UserSignup, CheckEmail } from "../actions/actions";
+import { CheckEmail, UserSignup } from "../actions/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignup: (email, password) => dispatch(UserSignup(email, password)),
-    onCheckEmail: email => dispatch(CheckEmail(email))
+    onCheckEmail: email => dispatch(CheckEmail(email)),
+    onSignup: (email, password) => dispatch(UserSignup(email, password))
   };
 };
 
@@ -93,7 +93,9 @@ const Signup = props => {
                 4️⃣&nbsp;
               </span>
             </td>
-            <td align="left">1 number OR 1 non-alphanumeric character</td>
+            <td align="left">
+              1 number <i>or</i> 1 non-alphanumeric character
+            </td>
           </tr>
         </table>
       </div>
