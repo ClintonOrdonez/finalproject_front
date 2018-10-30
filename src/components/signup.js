@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { UserSignup, CheckEmail } from "../actions/actions";
+import { CheckEmail, UserSignup } from "../actions/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignup: (email, password) => dispatch(UserSignup(email, password)),
-    onCheckEmail: email => dispatch(CheckEmail(email))
+    onCheckEmail: email => dispatch(CheckEmail(email)),
+    onSignup: (email, password) => dispatch(UserSignup(email, password))
   };
 };
 

@@ -43,13 +43,14 @@ export const UserLogout = () => {
   };
 };
 
-// This function will check if an email is in the database
+// Check whether an email is in database and return count:
+// 0 email is not present; 1 email is present
 export const CheckEmail = email => {
   return dispatch => {
     return axios
       .post(userURL + "/checkEmail", { email: email })
       .then(response => {
-        // console.log(response);
+        console.log(response);
         return response;
       })
       .catch(error => {
@@ -58,13 +59,14 @@ export const CheckEmail = email => {
   };
 };
 
-// This function will check if an email has a matching password
+// Check whether an email has a matching password:
+// true password is correct, false password is incorrect
 export const CheckPassword = (email, password) => {
   return dispatch => {
     return axios
       .post(userURL + "/checkPassword", { email: email, password: password })
       .then(response => {
-        //console.log(response);
+        console.log(response);
         return response;
       })
       .catch(error => {

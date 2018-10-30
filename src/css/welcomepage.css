@@ -13,10 +13,10 @@ a:hover {
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: rgb(248, 0, 0);
+  color: rgb(0, 250, 175);
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: rgb(9, 255, 0);
-  border: 0.05rem solid rgb(109, 109, 97);
+  background-color: rgb(144, 0, 228);
+  border: 0.05rem solid rgb(255, 255, 255);
 }
 
 /*
@@ -31,7 +31,7 @@ body {
     90deg,
     rgb(0, 250, 175),
     rgb(144, 0, 228) 15%,
-    rgb(0, 108, 250) 85%,
+    rgb(144, 0, 228) 85%,
     rgb(0, 250, 175)
   );
 
@@ -47,6 +47,8 @@ body {
   justify-content: center;
   color: #fff;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .cover-container {
@@ -74,7 +76,7 @@ body {
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgb(255, 0, 0);
+  border-bottom-color: rgb(255, 255, 255);
 }
 
 .nav-masthead .nav-link + .nav-link {
@@ -82,8 +84,8 @@ body {
 }
 
 .nav-masthead .active {
-  color: rgb(255, 0, 0);
-  border-bottom-color: rgba(255, 0, 0);
+  color: rgb(255, 255, 255);
+  border-bottom-color: rgb(255, 255, 255);
 }
 
 @media (min-width: 48em) {

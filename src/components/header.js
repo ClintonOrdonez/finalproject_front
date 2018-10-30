@@ -30,6 +30,12 @@ const Header = props => (
           </NavLink>
         )}
 
+        {props.token === null && (
+          <NavLink activeClassName="active" className="nav-link" to="/theme">
+            [Theme]
+          </NavLink>
+        )}
+
         {props.token && (
           <NavLink
             activeClassName="active"
