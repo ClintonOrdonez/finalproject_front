@@ -93,7 +93,9 @@ const Signup = props => {
                 4️⃣&nbsp;
               </span>
             </td>
-            <td align="left">1 number OR 1 non-alphanumeric character</td>
+            <td align="left">
+              1 number <i>or</i> 1 non-alphanumeric character
+            </td>
           </tr>
         </table>
       </div>
