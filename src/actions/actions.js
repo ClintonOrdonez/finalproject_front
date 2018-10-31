@@ -50,7 +50,7 @@ export const CheckEmail = email => {
     return axios
       .post(userURL + "/checkEmail", { email: email })
       .then(response => {
-        // console.log(response);
+        console.log(response);
         return response;
       })
       .catch(error => {

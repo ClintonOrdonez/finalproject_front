@@ -69,7 +69,7 @@ body {
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
 }
@@ -118,15 +118,6 @@ body {
 .mainSection {
   width: 75vw;
   max-width: 40em;
-}
-input[type="text"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid rgb(0, 0, 0);
-  background-color: rgb(252, 0, 0);
-  color: rgb(53, 0, 50);
 }
 
 .notfound {
