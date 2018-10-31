@@ -59,7 +59,7 @@ export const CheckEmail = email => {
   };
 };
 
-// Check whether an email has a matching password:
+// Check whether an email has a matching password and returns boolean:
 // true password is correct, false password is incorrect
 export const CheckPassword = (email, password) => {
   return dispatch => {
@@ -74,3 +74,9 @@ export const CheckPassword = (email, password) => {
       });
   };
 };
+
+// Searches database by email property using oldEmail
+// Updates email property with newEmail
+
+// Searches database by email property
+// Updates password property with encrypted tempUser.password
