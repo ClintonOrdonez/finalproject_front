@@ -1,12 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { CheckEmail, CheckPassword, UserLogin } from "../actions/actions";
+import {
+  UserCheckEmail,
+  UserCheckPassword,
+  UserLogin
+} from "../actions/userActions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCheckEmail: email => dispatch(CheckEmail(email)),
+    onCheckEmail: email => dispatch(UserCheckEmail(email)),
     onCheckPassword: (email, password) =>
-      dispatch(CheckPassword(email, password)),
+      dispatch(UserCheckPassword(email, password)),
     onLogin: (email, password) => dispatch(UserLogin(email, password))
   };
 };
@@ -57,15 +61,15 @@ const Login = props => {
             password = p;
           }}
           onChange={() => {
-            if (validEmail === true) {
-              props
-                .onCheckPassword(email.value, password.value)
-                .then(result => {
-                  validPassword = result.data;
-                });
-            } else {
-              validPassword = false;
-            }
+            props.onCheckEmail(email.value).then(result => {
+              if (result.data.count === 1) {
+                props
+                  .onCheckPassword(email.value, password.value)
+                  .then(result => {
+                    validPassword = result.data;
+                  });
+              }
+            });
             // console.log("password: " + validPassword);
           }}
         />
@@ -86,7 +90,7 @@ const Login = props => {
               props.onLogin(email.value, password.value);
               props.history.push("/");
             } else {
-              document.getElementById("submit").innerHTML =
+              document.getElementById("submitSpan").innerHTML =
                 "Invalid email and/or password.";
             }
           }}
@@ -94,9 +98,7 @@ const Login = props => {
           Submit
         </button>
         <br />
-        <span id="submit">
-          <br />
-        </span>
+        <span id="submitSpan">&nbsp;</span>
       </div>
     </div>
   );

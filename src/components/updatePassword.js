@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { UserLogin } from "../actions/actions";
+import { UserCheckPassword, UserUpdatePassword } from "../actions/userActions";
 
 const mapStateToProps = state => {
   return {
@@ -10,12 +10,17 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogin: (email, password) => dispatch(UserLogin(email, password))
+    onCheckPassword: (email, password) =>
+      dispatch(UserCheckPassword(email, password)),
+    onUpdatePassword: (email, password) =>
+      dispatch(UserUpdatePassword(email, password))
   };
 };
 
-const updatePassword = props => {
-  let oldPassword;
+const UpdatePassword = props => {
+  let email = props.email;
+  let currentPassword;
+  let validCurrentPassword = false;
   let newPassword;
   let validNewPassword = false;
   let confirmNewPassword;
@@ -25,19 +30,66 @@ const updatePassword = props => {
     <div>
       <h3>Update Password</h3>
 
-      {/* Old Password input */}
+      {/* Current Password input */}
       <div className="form-group">
         <input
           type="password"
           className="form-control"
-          placeholder="Old Password"
-          ref={oP => {
-            oldPassword = oP;
+          placeholder="Current Password"
+          ref={cP => {
+            currentPassword = cP;
+          }}
+          onChange={() => {
+            props.onCheckPassword(email, currentPassword.value).then(result => {
+              validCurrentPassword = result.data;
+            });
           }}
         />
-        <span id="oldPassword">
-          <br />
-        </span>
+        {/* <span id="currentPasswordSpan">&nbsp;</span> */}
+      </div>
+
+      {/* Password Requirements table */}
+      <div className="form-group">
+        <h6>Passwords have the following requirements:</h6>
+        <table align="center">
+          <tbody>
+            <tr>
+              <td>
+                <span id="requirement1Span" role="img" aria-label="1">
+                  1️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">8 or more characters</td>
+            </tr>
+
+            <tr>
+              <td>
+                <span id="requirement2Span" role="img" aria-label="2">
+                  2️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">1 uppercase letter</td>
+            </tr>
+            <tr>
+              <td>
+                <span id="requirement3Span" role="img" aria-label="3">
+                  3️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">1 lowercase letter</td>
+            </tr>
+            <tr>
+              <td>
+                <span id="requirement4Span" role="img" aria-label="4">
+                  4️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">
+                1 number <i>or</i> 1 non-alphanumeric character
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       {/* New Password input */}
@@ -56,28 +108,56 @@ const updatePassword = props => {
             let hasNumber = /\d/.test(newPassword.value);
             let hasNonAlphaNumeric = /\W/.test(newPassword.value);
 
-            if (newPassword.value.length >= 8) {
-              document.getElementById("requirement1").innerHTML = "✅&nbsp;";
+            if (newPassword.value !== "") {
+              if (newPassword.value.length >= 8) {
+                document.getElementById("requirement1Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement1Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement1").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement1Span").innerHTML =
+                "1️⃣&nbsp;";
             }
 
-            if (hasUpperCase === true) {
-              document.getElementById("requirement2").innerHTML = "✅&nbsp;";
+            if (newPassword.value !== "") {
+              if (hasUpperCase === true) {
+                document.getElementById("requirement2Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement2Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement2").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement2Span").innerHTML =
+                "2️⃣&nbsp;";
             }
 
-            if (hasLowerCase === true) {
-              document.getElementById("requirement3").innerHTML = "✅&nbsp;";
+            if (newPassword.value !== "") {
+              if (hasLowerCase === true) {
+                document.getElementById("requirement3Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement3Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement3").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement3Span").innerHTML =
+                "3️⃣&nbsp;";
             }
 
-            if (hasNumber === true || hasNonAlphaNumeric === true) {
-              document.getElementById("requirement4").innerHTML = "✅&nbsp;";
+            if (newPassword.value !== "") {
+              if (hasNumber === true || hasNonAlphaNumeric === true) {
+                document.getElementById("requirement4Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement4Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement4").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement4Span").innerHTML =
+                "4️⃣&nbsp;";
             }
 
             if (
@@ -91,59 +171,25 @@ const updatePassword = props => {
               validNewPassword = false;
             }
 
-            if (newPassword.value === confirmNewPassword.value) {
-              matchNewPassword = true;
-              document.getElementById("confirmNewPassword").innerHTML =
-                "Passwords match.";
+            if (newPassword.value !== "" && confirmNewPassword.value !== "") {
+              if (newPassword.value === confirmNewPassword.value) {
+                matchNewPassword = true;
+                document.getElementById("confirmNewPasswordSpan").innerHTML =
+                  "Passwords match.";
+              } else {
+                matchNewPassword = false;
+                document.getElementById("confirmNewPasswordSpan").innerHTML =
+                  "Passwords do not match.";
+              }
             } else {
-              matchNewPassword = false;
-              document.getElementById("confirmNewPassword").innerHTML =
-                "Passwords do not match.";
+              document.getElementById("confirmNewPasswordSpan").innerHTML =
+                "&nbsp;";
             }
           }}
         />
       </div>
 
-      {/* Password Requirements table */}
-      <div className="form-group">
-        <h6>Passwords have the following requirements:</h6>
-        <table align="center">
-          <tr>
-            <td>
-              <span id="requirement1" role="img" aria-label="1">
-                1️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">8 or more characters</td>
-          </tr>
-          <tr>
-            <td>
-              <span id="requirement2" role="img" aria-label="2">
-                2️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">1 uppercase letter</td>
-          </tr>
-          <tr>
-            <td>
-              <span id="requirement3" role="img" aria-label="3">
-                3️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">1 lowercase letter</td>
-          </tr>
-          <tr>
-            <td>
-              <span id="requirement4" role="img" aria-label="4">
-                4️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">1 number OR 1 non-alphanumeric character</td>
-          </tr>
-        </table>
-      </div>
-
-      {/* Confirm New Password button */}
+      {/* Confirm New Password input */}
       <div className="form-group">
         <input
           type="password"
@@ -152,10 +198,24 @@ const updatePassword = props => {
           ref={cNP => {
             confirmNewPassword = cNP;
           }}
+          onChange={() => {
+            if (newPassword.value !== "" && confirmNewPassword.value !== "") {
+              if (newPassword.value === confirmNewPassword.value) {
+                matchNewPassword = true;
+                document.getElementById("confirmNewPasswordSpan").innerHTML =
+                  "Passwords match.";
+              } else {
+                matchNewPassword = false;
+                document.getElementById("confirmNewPasswordSpan").innerHTML =
+                  "Passwords do not match.";
+              }
+            } else {
+              document.getElementById("confirmNewPasswordSpan").innerHTML =
+                "&nbsp;";
+            }
+          }}
         />
-        <span id="confirmNewPassword">
-          <br />
-        </span>
+        <span id="confirmNewPasswordSpan">&nbsp;</span>
       </div>
 
       {/* Submit button */}
@@ -176,4 +236,4 @@ const updatePassword = props => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(updatePassword);
+)(UpdatePassword);

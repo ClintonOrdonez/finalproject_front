@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { UserLogout } from "../actions/actions";
+import { UserLogout } from "../actions/userActions";
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { CheckEmail, UserSignup } from "../actions/actions";
+import { UserCheckEmail, UserSignup } from "../actions/userActions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCheckEmail: email => dispatch(CheckEmail(email)),
+    onCheckEmail: email => dispatch(UserCheckEmail(email)),
     onSignup: (email, password) => dispatch(UserSignup(email, password))
   };
 };
@@ -36,67 +36,73 @@ const Signup = props => {
           onChange={() => {
             let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-            if (emailRegex.test(email.value)) {
-              props.onCheckEmail(email.value).then(result => {
-                if (result.data.count === 0) {
-                  validEmail = true;
-                  document.getElementById("email").innerHTML =
-                    "Email is valid.";
-                } else {
-                  validEmail = false;
-                  document.getElementById("email").innerHTML =
-                    "Email already in use; provide a different email or login to existing account.";
-                }
-              });
+            if (email.value !== "") {
+              if (emailRegex.test(email.value)) {
+                props.onCheckEmail(email.value).then(result => {
+                  if (result.data.count === 0) {
+                    validEmail = true;
+                    document.getElementById("emailSpan").innerHTML =
+                      "Email is valid.";
+                  } else {
+                    validEmail = false;
+                    document.getElementById("emailSpan").innerHTML =
+                      "Email already in use; provide a different email or login to existing account.";
+                  }
+                });
+              } else {
+                validEmail = false;
+                document.getElementById("emailSpan").innerHTML =
+                  "Not a valid email.";
+              }
             } else {
-              validEmail = false;
-              document.getElementById("email").innerHTML = "Not a valid email.";
+              document.getElementById("emailSpan").innerHTML = "&nbsp;";
             }
           }}
         />
-        <span id="email">
-          <br />
-        </span>
+        <span id="emailSpan">&nbsp;</span>
       </div>
 
       {/* Password Requirements table */}
       <div className="form-group">
         <h6>Passwords have the following requirements:</h6>
         <table align="center">
-          <tr>
-            <td>
-              <span id="requirement1" role="img" aria-label="1">
-                1️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">8 or more characters</td>
-          </tr>
-          <tr>
-            <td>
-              <span id="requirement2" role="img" aria-label="2">
-                2️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">1 uppercase letter</td>
-          </tr>
-          <tr>
-            <td>
-              <span id="requirement3" role="img" aria-label="3">
-                3️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">1 lowercase letter</td>
-          </tr>
-          <tr>
-            <td>
-              <span id="requirement4" role="img" aria-label="4">
-                4️⃣&nbsp;
-              </span>
-            </td>
-            <td align="left">
-              1 number <i>or</i> 1 non-alphanumeric character
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <span id="requirement1Span" role="img" aria-label="1">
+                  1️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">8 or more characters</td>
+            </tr>
+
+            <tr>
+              <td>
+                <span id="requirement2Span" role="img" aria-label="2">
+                  2️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">1 uppercase letter</td>
+            </tr>
+            <tr>
+              <td>
+                <span id="requirement3Span" role="img" aria-label="3">
+                  3️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">1 lowercase letter</td>
+            </tr>
+            <tr>
+              <td>
+                <span id="requirement4Span" role="img" aria-label="4">
+                  4️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">
+                1 number <i>or</i> 1 non-alphanumeric character
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
@@ -116,28 +122,56 @@ const Signup = props => {
             let hasNumber = /\d/.test(password.value);
             let hasNonAlphaNumeric = /\W/.test(password.value);
 
-            if (password.value.length >= 8) {
-              document.getElementById("requirement1").innerHTML = "✅&nbsp;";
+            if (password.value !== "") {
+              if (password.value.length >= 8) {
+                document.getElementById("requirement1Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement1Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement1").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement1Span").innerHTML =
+                "1️⃣&nbsp;";
             }
 
-            if (hasUpperCase === true) {
-              document.getElementById("requirement2").innerHTML = "✅&nbsp;";
+            if (password.value !== "") {
+              if (hasUpperCase === true) {
+                document.getElementById("requirement2Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement2Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement2").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement2Span").innerHTML =
+                "2️⃣&nbsp;";
             }
 
-            if (hasLowerCase === true) {
-              document.getElementById("requirement3").innerHTML = "✅&nbsp;";
+            if (password.value !== "") {
+              if (hasLowerCase === true) {
+                document.getElementById("requirement3Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement3Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement3").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement3Span").innerHTML =
+                "3️⃣&nbsp;";
             }
 
-            if (hasNumber === true || hasNonAlphaNumeric === true) {
-              document.getElementById("requirement4").innerHTML = "✅&nbsp;";
+            if (password.value !== "") {
+              if (hasNumber === true || hasNonAlphaNumeric === true) {
+                document.getElementById("requirement4Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement4Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
-              document.getElementById("requirement4").innerHTML = "🔴&nbsp;";
+              document.getElementById("requirement4Span").innerHTML =
+                "4️⃣&nbsp;";
             }
 
             if (
@@ -151,14 +185,19 @@ const Signup = props => {
               validPassword = false;
             }
 
-            if (password.value === confirmPassword.value) {
-              matchPassword = true;
-              document.getElementById("confirmPassword").innerHTML =
-                "Passwords match.";
+            if (password.value !== "" && confirmPassword.value !== "") {
+              if (password.value === confirmPassword.value) {
+                matchPassword = true;
+                document.getElementById("confirmPasswordSpan").innerHTML =
+                  "Passwords match.";
+              } else {
+                matchPassword = false;
+                document.getElementById("confirmPasswordSpan").innerHTML =
+                  "Passwords do not match.";
+              }
             } else {
-              matchPassword = false;
-              document.getElementById("confirmPassword").innerHTML =
-                "Passwords do not match.";
+              document.getElementById("confirmPasswordSpan").innerHTML =
+                "&nbsp;";
             }
           }}
         />
@@ -174,20 +213,23 @@ const Signup = props => {
             confirmPassword = cP;
           }}
           onChange={() => {
-            if (password.value === confirmPassword.value) {
-              matchPassword = true;
-              document.getElementById("confirmPassword").innerHTML =
-                "Passwords match.";
+            if (password.value !== "" && confirmPassword.value !== "") {
+              if (password.value === confirmPassword.value) {
+                matchPassword = true;
+                document.getElementById("confirmPasswordSpan").innerHTML =
+                  "Passwords match.";
+              } else {
+                matchPassword = false;
+                document.getElementById("confirmPasswordSpan").innerHTML =
+                  "Passwords do not match.";
+              }
             } else {
-              matchPassword = false;
-              document.getElementById("confirmPassword").innerHTML =
-                "Passwords do not match.";
+              document.getElementById("confirmPasswordSpan").innerHTML =
+                "&nbsp;";
             }
           }}
         />
-        <span id="confirmPassword">
-          <br />
-        </span>
+        <span id="confirmPasswordSpan">&nbsp;</span>
       </div>
 
       {/* Submit button */}
@@ -204,7 +246,7 @@ const Signup = props => {
               alert("Signup successful; logging in now.");
               props.history.push("/");
             } else {
-              document.getElementById("submit").innerHTML =
+              document.getElementById("submitSpan").innerHTML =
                 "Please satisfy all the above fields.";
             }
           }}
@@ -212,9 +254,7 @@ const Signup = props => {
           Submit
         </button>
         <br />
-        <span id="submit">
-          <br />
-        </span>
+        <span id="submitSpan">&nbsp;</span>
       </div>
     </div>
   );
