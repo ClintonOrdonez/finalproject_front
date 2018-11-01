@@ -97,14 +97,16 @@ export const UserUpdateEmail = (currentEmail, newEmail, password) => {
 // Searches database by email property
 // Updates password property with encrypted tempUser.password
 export const UserUpdatePassword = (email, password) => {
+  // console.log(email, password);
   return dispatch => {
     return axios
       .put(userURL + "/updatePassword", { email: email, password: password })
       .then(response => {
+        // console.log(response);
         dispatch(UserLogin(response.data.email, password));
       })
       .catch(error => {
-        throw error;
+        console.log(error);
       });
   };
 };

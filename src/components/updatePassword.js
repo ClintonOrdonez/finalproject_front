@@ -33,6 +33,7 @@ const UpdatePassword = props => {
       {/* Current Password input */}
       <div className="form-group">
         <input
+          id="currentPassword"
           type="password"
           className="form-control"
           placeholder="Current Password"
@@ -43,6 +44,19 @@ const UpdatePassword = props => {
             props.onCheckPassword(email, currentPassword.value).then(result => {
               validCurrentPassword = result.data;
             });
+
+            if (newPassword.value !== "") {
+              if (newPassword.value !== currentPassword.value) {
+                document.getElementById("requirement5Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement5Span").innerHTML =
+                  "🔴&nbsp;";
+              }
+            } else {
+              document.getElementById("requirement5Span").innerHTML =
+                "5️⃣&nbsp;";
+            }
           }}
         />
         {/* <span id="currentPasswordSpan">&nbsp;</span> */}
@@ -50,7 +64,7 @@ const UpdatePassword = props => {
 
       {/* Password Requirements table */}
       <div className="form-group">
-        <h6>Passwords have the following requirements:</h6>
+        <h6>New passwords have the following requirements:</h6>
         <table align="center">
           <tbody>
             <tr>
@@ -70,6 +84,7 @@ const UpdatePassword = props => {
               </td>
               <td align="left">1 uppercase letter</td>
             </tr>
+
             <tr>
               <td>
                 <span id="requirement3Span" role="img" aria-label="3">
@@ -78,6 +93,7 @@ const UpdatePassword = props => {
               </td>
               <td align="left">1 lowercase letter</td>
             </tr>
+
             <tr>
               <td>
                 <span id="requirement4Span" role="img" aria-label="4">
@@ -88,6 +104,15 @@ const UpdatePassword = props => {
                 1 number <i>or</i> 1 non-alphanumeric character
               </td>
             </tr>
+
+            <tr>
+              <td>
+                <span id="requirement5Span" role="img" aria-label="5">
+                  5️⃣&nbsp;
+                </span>
+              </td>
+              <td align="left">Cannot be the same as current password</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -95,6 +120,7 @@ const UpdatePassword = props => {
       {/* New Password input */}
       <div className="form-group">
         <input
+          id="newPassword"
           type="password"
           className="form-control"
           placeholder="New Password"
@@ -116,12 +142,7 @@ const UpdatePassword = props => {
                 document.getElementById("requirement1Span").innerHTML =
                   "🔴&nbsp;";
               }
-            } else {
-              document.getElementById("requirement1Span").innerHTML =
-                "1️⃣&nbsp;";
-            }
 
-            if (newPassword.value !== "") {
               if (hasUpperCase === true) {
                 document.getElementById("requirement2Span").innerHTML =
                   "✅&nbsp;";
@@ -129,12 +150,7 @@ const UpdatePassword = props => {
                 document.getElementById("requirement2Span").innerHTML =
                   "🔴&nbsp;";
               }
-            } else {
-              document.getElementById("requirement2Span").innerHTML =
-                "2️⃣&nbsp;";
-            }
 
-            if (newPassword.value !== "") {
               if (hasLowerCase === true) {
                 document.getElementById("requirement3Span").innerHTML =
                   "✅&nbsp;";
@@ -142,12 +158,7 @@ const UpdatePassword = props => {
                 document.getElementById("requirement3Span").innerHTML =
                   "🔴&nbsp;";
               }
-            } else {
-              document.getElementById("requirement3Span").innerHTML =
-                "3️⃣&nbsp;";
-            }
 
-            if (newPassword.value !== "") {
               if (hasNumber === true || hasNonAlphaNumeric === true) {
                 document.getElementById("requirement4Span").innerHTML =
                   "✅&nbsp;";
@@ -155,16 +166,33 @@ const UpdatePassword = props => {
                 document.getElementById("requirement4Span").innerHTML =
                   "🔴&nbsp;";
               }
+
+              if (newPassword.value !== currentPassword.value) {
+                document.getElementById("requirement5Span").innerHTML =
+                  "✅&nbsp;";
+              } else {
+                document.getElementById("requirement5Span").innerHTML =
+                  "🔴&nbsp;";
+              }
             } else {
+              document.getElementById("requirement1Span").innerHTML =
+                "1️⃣&nbsp;";
+              document.getElementById("requirement2Span").innerHTML =
+                "2️⃣&nbsp;";
+              document.getElementById("requirement3Span").innerHTML =
+                "3️⃣&nbsp;";
               document.getElementById("requirement4Span").innerHTML =
                 "4️⃣&nbsp;";
+              document.getElementById("requirement5Span").innerHTML =
+                "5️⃣&nbsp;";
             }
 
             if (
               newPassword.value.length >= 8 &&
               hasUpperCase === true &&
               hasLowerCase === true &&
-              (hasNumber === true || hasNonAlphaNumeric === true)
+              (hasNumber === true || hasNonAlphaNumeric === true) &&
+              newPassword.value !== currentPassword.value
             ) {
               validNewPassword = true;
             } else {
@@ -182,6 +210,7 @@ const UpdatePassword = props => {
                   "Passwords do not match.";
               }
             } else {
+              matchNewPassword = false;
               document.getElementById("confirmNewPasswordSpan").innerHTML =
                 "&nbsp;";
             }
@@ -192,6 +221,7 @@ const UpdatePassword = props => {
       {/* Confirm New Password input */}
       <div className="form-group">
         <input
+          id="confirmNewPassword"
           type="password"
           className="form-control"
           placeholder="Confirm New Password"
@@ -210,6 +240,7 @@ const UpdatePassword = props => {
                   "Passwords do not match.";
               }
             } else {
+              matchNewPassword = false;
               document.getElementById("confirmNewPasswordSpan").innerHTML =
                 "&nbsp;";
             }
@@ -222,12 +253,46 @@ const UpdatePassword = props => {
       <div className="form-group">
         <button
           className="btn btn-secondary"
+          // onMouseOver={() => {
+          //   console.log("current email: " + validCurrentPassword);
+          //   console.log("new password: " + validNewPassword);
+          //   console.log("match password: " + matchNewPassword);
+          // }}
           onClick={() => {
-            props.history.push("/");
+            if (
+              validCurrentPassword === true &&
+              validNewPassword === true &&
+              matchNewPassword === true
+            ) {
+              props.onUpdatePassword(email, newPassword.value);
+              alert("Password has been updated successfully.");
+              document.getElementById("currentPassword").value = "";
+              document.getElementById("requirement1Span").innerHTML =
+                "1️⃣&nbsp;";
+              document.getElementById("requirement2Span").innerHTML =
+                "2️⃣&nbsp;";
+              document.getElementById("requirement3Span").innerHTML =
+                "3️⃣&nbsp;";
+              document.getElementById("requirement4Span").innerHTML =
+                "4️⃣&nbsp;";
+              document.getElementById("requirement5Span").innerHTML =
+                "5️⃣&nbsp;";
+              document.getElementById("newPassword").value = "";
+              document.getElementById("confirmNewPassword").value = "";
+              document.getElementById("confirmNewPasswordSpan").innerHTML =
+                "&nbsp;";
+              document.getElementById("submitSpan").innerHTML = "&nbsp;";
+              props.history.push("/updatePassword");
+            } else {
+              document.getElementById("submitSpan").innerHTML =
+                "Please satisfy all the above fields.";
+            }
           }}
         >
           Submit
         </button>
+        <br />
+        <span id="submitSpan">&nbsp;</span>
       </div>
     </div>
   );

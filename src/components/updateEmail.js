@@ -48,30 +48,31 @@ const UpdateEmail = props => {
             let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
             if (newEmail.value !== "") {
-              if (newEmail.value !== currentEmail) {
-                if (emailRegex.test(newEmail.value)) {
-                  props.onCheckEmail(newEmail.value).then(result => {
-                    if (result.data.count === 0) {
-                      validNewEmail = true;
-                      document.getElementById("newEmailSpan").innerHTML =
-                        "Email is valid.";
-                    } else {
-                      validNewEmail = false;
-                      document.getElementById("newEmailSpan").innerHTML =
-                        "Email already in use; provide a different email.";
-                    }
-                  });
-                } else {
-                  validNewEmail = false;
-                  document.getElementById("newEmailSpan").innerHTML =
-                    "Not a valid email.";
-                }
+              // if (newEmail.value !== currentEmail) {
+              if (emailRegex.test(newEmail.value)) {
+                props.onCheckEmail(newEmail.value).then(result => {
+                  if (result.data.count === 0) {
+                    validNewEmail = true;
+                    document.getElementById("newEmailSpan").innerHTML =
+                      "Email is valid.";
+                  } else {
+                    validNewEmail = false;
+                    document.getElementById("newEmailSpan").innerHTML =
+                      "Email already in use; provide a different email.";
+                  }
+                });
               } else {
                 validNewEmail = false;
                 document.getElementById("newEmailSpan").innerHTML =
-                  "Cannot update email to current email.";
+                  "Not a valid email.";
               }
+              // } else {
+              //   validNewEmail = false;
+              //   document.getElementById("newEmailSpan").innerHTML =
+              //     "New email cannot be the same as current email.";
+              // }
             } else {
+              validNewEmail = false;
               document.getElementById("newEmailSpan").innerHTML = "&nbsp;";
             }
           }}
@@ -129,10 +130,11 @@ const UpdateEmail = props => {
                   " successfully."
               );
               document.getElementById("newEmail").value = "";
-              document.getElementById("password").value = "";
               document.getElementById("newEmailSpan").innerHTML = "&nbsp;";
+              document.getElementById("password").value = "";
               //   document.getElementById("passwordSpan").innerHTML = "&nbsp;";
               document.getElementById("submitSpan").innerHTML = "&nbsp;";
+              props.history.push("/updateEmail");
             } else {
               document.getElementById("submitSpan").innerHTML =
                 "Please satisfy all the above fields.";

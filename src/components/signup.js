@@ -55,6 +55,7 @@ const Signup = props => {
                   "Not a valid email.";
               }
             } else {
+              validEmail = false;
               document.getElementById("emailSpan").innerHTML = "&nbsp;";
             }
           }}
@@ -84,6 +85,7 @@ const Signup = props => {
               </td>
               <td align="left">1 uppercase letter</td>
             </tr>
+
             <tr>
               <td>
                 <span id="requirement3Span" role="img" aria-label="3">
@@ -92,6 +94,7 @@ const Signup = props => {
               </td>
               <td align="left">1 lowercase letter</td>
             </tr>
+
             <tr>
               <td>
                 <span id="requirement4Span" role="img" aria-label="4">
@@ -130,12 +133,7 @@ const Signup = props => {
                 document.getElementById("requirement1Span").innerHTML =
                   "🔴&nbsp;";
               }
-            } else {
-              document.getElementById("requirement1Span").innerHTML =
-                "1️⃣&nbsp;";
-            }
 
-            if (password.value !== "") {
               if (hasUpperCase === true) {
                 document.getElementById("requirement2Span").innerHTML =
                   "✅&nbsp;";
@@ -143,12 +141,7 @@ const Signup = props => {
                 document.getElementById("requirement2Span").innerHTML =
                   "🔴&nbsp;";
               }
-            } else {
-              document.getElementById("requirement2Span").innerHTML =
-                "2️⃣&nbsp;";
-            }
 
-            if (password.value !== "") {
               if (hasLowerCase === true) {
                 document.getElementById("requirement3Span").innerHTML =
                   "✅&nbsp;";
@@ -156,12 +149,7 @@ const Signup = props => {
                 document.getElementById("requirement3Span").innerHTML =
                   "🔴&nbsp;";
               }
-            } else {
-              document.getElementById("requirement3Span").innerHTML =
-                "3️⃣&nbsp;";
-            }
 
-            if (password.value !== "") {
               if (hasNumber === true || hasNonAlphaNumeric === true) {
                 document.getElementById("requirement4Span").innerHTML =
                   "✅&nbsp;";
@@ -170,6 +158,12 @@ const Signup = props => {
                   "🔴&nbsp;";
               }
             } else {
+              document.getElementById("requirement1Span").innerHTML =
+                "1️⃣&nbsp;";
+              document.getElementById("requirement2Span").innerHTML =
+                "2️⃣&nbsp;";
+              document.getElementById("requirement3Span").innerHTML =
+                "3️⃣&nbsp;";
               document.getElementById("requirement4Span").innerHTML =
                 "4️⃣&nbsp;";
             }
@@ -196,6 +190,7 @@ const Signup = props => {
                   "Passwords do not match.";
               }
             } else {
+              matchPassword = false;
               document.getElementById("confirmPasswordSpan").innerHTML =
                 "&nbsp;";
             }
@@ -224,6 +219,7 @@ const Signup = props => {
                   "Passwords do not match.";
               }
             } else {
+              matchPassword = false;
               document.getElementById("confirmPasswordSpan").innerHTML =
                 "&nbsp;";
             }
