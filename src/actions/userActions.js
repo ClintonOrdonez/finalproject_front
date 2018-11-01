@@ -2,7 +2,7 @@ import { USER_LOGIN, USER_LOGOUT } from "./types";
 import axios from "axios";
 
 // let userURL = "http://localhost:8080/users";
-let userURL = "http://development-deployment-server.herokuapp.com/users";
+let userURL = "https://development-deployment-server.herokuapp.com/users";
 
 export const UserSignup = (email, password) => {
   return dispatch => {
