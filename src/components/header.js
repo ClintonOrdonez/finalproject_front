@@ -30,9 +30,9 @@ const Header = props => (
           </NavLink>
         )}
 
-        {props.token === null && (
+        {props.token && (
           <NavLink activeClassName="active" className="nav-link" to="/theme">
-            [Theme]
+            [Theme - WIP]
           </NavLink>
         )}
 

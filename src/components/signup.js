@@ -11,12 +11,14 @@ const mapDispatchToProps = dispatch => {
 
 const Signup = props => {
   // Email input variables
+  let emailRaw;
   let email;
+  let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
   // Password input variables
   let password;
   let validPassword = false;
-  // Confirm Password variables
+  // Confirm Password input variables
   let confirmPassword;
   let matchPassword = false;
 
@@ -30,15 +32,15 @@ const Signup = props => {
           type="text"
           className="form-control"
           placeholder="Email"
-          ref={e => {
-            email = e;
+          ref={eR => {
+            emailRaw = eR;
           }}
           onChange={() => {
-            let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            email = emailRaw.value.toLowerCase();
 
-            if (email.value !== "") {
-              if (emailRegex.test(email.value)) {
-                props.onCheckEmail(email.value).then(result => {
+            if (email !== "") {
+              if (emailRegex.test(email) === true) {
+                props.onCheckEmail(email).then(result => {
                   if (result.data.count === 0) {
                     validEmail = true;
                     document.getElementById("emailSpan").innerHTML =
@@ -232,13 +234,18 @@ const Signup = props => {
       <div className="form-group">
         <button
           className="btn btn-secondary"
+          // onMouseOver={() => {
+          //   console.log(validEmail);
+          //   console.log(validPassword);
+          //   console.log(matchPassword);
+          // }}
           onClick={() => {
             if (
               validEmail === true &&
               validPassword === true &&
               matchPassword === true
             ) {
-              props.onSignup(email.value, password.value);
+              props.onSignup(email, password.value);
               alert("Signup successful; logging in now.");
               props.history.push("/");
             } else {

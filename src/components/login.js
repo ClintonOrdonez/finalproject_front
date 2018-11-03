@@ -16,6 +16,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const Login = props => {
+  let emailRaw;
   let email;
   let validEmail = false;
   let password;
@@ -31,11 +32,13 @@ const Login = props => {
           type="text"
           className="form-control"
           placeholder="Email"
-          ref={e => {
-            email = e;
+          ref={eR => {
+            emailRaw = eR;
           }}
           onChange={() => {
-            props.onCheckEmail(email.value).then(result => {
+            email = emailRaw.value.toLowerCase();
+
+            props.onCheckEmail(email).then(result => {
               if (result.data.count === 1) {
                 validEmail = true;
                 // console.log("email: " + validEmail);
@@ -61,13 +64,11 @@ const Login = props => {
             password = p;
           }}
           onChange={() => {
-            props.onCheckEmail(email.value).then(result => {
+            props.onCheckEmail(email).then(result => {
               if (result.data.count === 1) {
-                props
-                  .onCheckPassword(email.value, password.value)
-                  .then(result => {
-                    validPassword = result.data;
-                  });
+                props.onCheckPassword(email, password.value).then(result => {
+                  validPassword = result.data;
+                });
               }
             });
             // console.log("password: " + validPassword);
@@ -87,7 +88,7 @@ const Login = props => {
             // If both email and password are valid, submit data to login
             if (validEmail === true && validPassword === true) {
               // alert("Logging in now.");
-              props.onLogin(email.value, password.value);
+              props.onLogin(email, password.value);
               props.history.push("/");
             } else {
               document.getElementById("submitSpan").innerHTML =

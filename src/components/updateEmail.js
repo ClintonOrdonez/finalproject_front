@@ -24,7 +24,9 @@ const mapDispatchToProps = dispatch => {
 
 const UpdateEmail = props => {
   let currentEmail = props.email;
+  let newEmailRaw;
   let newEmail;
+  let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validNewEmail = false;
   let password;
   let validPassword = false;
@@ -41,16 +43,16 @@ const UpdateEmail = props => {
           type="text"
           className="form-control"
           placeholder="New Email"
-          ref={nE => {
-            newEmail = nE;
+          ref={nER => {
+            newEmailRaw = nER;
           }}
           onChange={() => {
-            let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            newEmail = newEmailRaw.value.toLowerCase();
 
-            if (newEmail.value !== "") {
+            if (newEmail !== "") {
               // if (newEmail.value !== currentEmail) {
-              if (emailRegex.test(newEmail.value)) {
-                props.onCheckEmail(newEmail.value).then(result => {
+              if (emailRegex.test(newEmail) === true) {
+                props.onCheckEmail(newEmail).then(result => {
                   if (result.data.count === 0) {
                     validNewEmail = true;
                     document.getElementById("newEmailSpan").innerHTML =
@@ -58,7 +60,7 @@ const UpdateEmail = props => {
                   } else {
                     validNewEmail = false;
                     document.getElementById("newEmailSpan").innerHTML =
-                      "Email already in use; provide a different email.";
+                      "Email already in use; provide a different email or login to existing account.";
                   }
                 });
               } else {
@@ -121,12 +123,12 @@ const UpdateEmail = props => {
           // }}
           onClick={() => {
             if (validNewEmail === true && validPassword === true) {
-              props.onUpdateEmail(currentEmail, newEmail.value, password.value);
+              props.onUpdateEmail(currentEmail, newEmail, password.value);
               alert(
                 "Email has been updated from " +
                   currentEmail +
                   " to " +
-                  newEmail.value +
+                  newEmail +
                   " successfully."
               );
               document.getElementById("newEmail").value = "";
