@@ -57,6 +57,16 @@ const Header = props => (
         )}
 
         {props.token && (
+          <NavLink
+            activeClassName="active"
+            className="nav-link"
+            to="/deleteAccount"
+          >
+            [Delete Account]
+          </NavLink>
+        )}
+
+        {props.token && (
           <NavLink activeClassName="active" className="nav-link" to="/logout">
             [Logout]
           </NavLink>

@@ -7,6 +7,7 @@ import Logout from "./logout";
 import Signup from "./signup";
 import UpdateEmail from "./updateEmail";
 import UpdatePassword from "./updatePassword";
+import DeleteAccount from "./deleteAccount";
 
 export {
   ProtectedRoute,
@@ -17,5 +18,6 @@ export {
   Logout,
   Signup,
   UpdateEmail,
-  UpdatePassword
+  UpdatePassword,
+  DeleteAccount
 };

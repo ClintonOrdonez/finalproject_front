@@ -11,7 +11,8 @@ import {
   Logout,
   Signup,
   UpdateEmail,
-  UpdatePassword
+  UpdatePassword,
+  DeleteAccount
 } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -36,6 +37,7 @@ const App = props => (
                 path="/updatePassword"
                 component={UpdatePassword}
               />
+              <ProtectedRoute path="/deleteAccount" component={DeleteAccount} />
               <ProtectedRoute path="/logout" component={Logout} />
               <UnprotectedRoute path="/login" component={Login} />
               <UnprotectedRoute path="/signup" component={Signup} />

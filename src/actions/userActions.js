@@ -76,7 +76,7 @@ export const UserCheckPassword = (email, password) => {
   };
 };
 
-// Searches database by email property using oldEmail
+// Searches database by email property using currentEmail
 // Updates email property with newEmail
 export const UserUpdateEmail = (currentEmail, newEmail, password) => {
   return dispatch => {
@@ -105,6 +105,23 @@ export const UserUpdatePassword = (email, password) => {
       .then(response => {
         // console.log(response);
         dispatch(UserLogin(response.data.email, password));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+};
+
+// Searches database by email property
+// Deletes found record from database
+export const UserDeleteAccount = email => {
+  // console.log(email);
+  return dispatch => {
+    return axios
+      .delete(userURL + "/deleteAccount", { email: email })
+      .then(response => {
+        // console.log(response);
+        dispatch(UserLogout());
       })
       .catch(error => {
         console.log(error);
