@@ -24,9 +24,12 @@ const Signup = props => {
 
   return (
     <div>
-      <h3>Signup</h3>
+      {/* "Signup" header */}
+      <div className="form-group">
+        <h3>Signup</h3>
+      </div>
 
-      {/* Email input */}
+      {/* "Email" input */}
       <div className="form-group">
         <input
           type="text"
@@ -44,7 +47,7 @@ const Signup = props => {
                   if (result.data.count === 0) {
                     validEmail = true;
                     document.getElementById("emailSpan").innerHTML =
-                      "Email is valid.";
+                      "Email is a valid format.";
                   } else {
                     validEmail = false;
                     document.getElementById("emailSpan").innerHTML =
@@ -54,7 +57,7 @@ const Signup = props => {
               } else {
                 validEmail = false;
                 document.getElementById("emailSpan").innerHTML =
-                  "Not a valid email.";
+                  "Email is an invalid format.";
               }
             } else {
               validEmail = false;
@@ -65,9 +68,9 @@ const Signup = props => {
         <span id="emailSpan">&nbsp;</span>
       </div>
 
-      {/* Password Requirements table */}
+      {/* "Password requirements" table */}
       <div className="form-group">
-        <h6>Passwords have the following requirements:</h6>
+        <h6>Password requirements:</h6>
         <table align="center">
           <tbody>
             <tr>
@@ -76,7 +79,7 @@ const Signup = props => {
                   1️⃣&nbsp;
                 </span>
               </td>
-              <td align="left">8 or more characters</td>
+              <td align="left">Length of 8 or more characters</td>
             </tr>
 
             <tr>
@@ -85,7 +88,7 @@ const Signup = props => {
                   2️⃣&nbsp;
                 </span>
               </td>
-              <td align="left">1 uppercase letter</td>
+              <td align="left">At least 1 uppercase letter</td>
             </tr>
 
             <tr>
@@ -94,7 +97,7 @@ const Signup = props => {
                   3️⃣&nbsp;
                 </span>
               </td>
-              <td align="left">1 lowercase letter</td>
+              <td align="left">At least 1 lowercase letter</td>
             </tr>
 
             <tr>
@@ -104,14 +107,15 @@ const Signup = props => {
                 </span>
               </td>
               <td align="left">
-                1 number <i>or</i> 1 non-alphanumeric character
+                At least 1 number <i>and</i>/<i>or</i> 1 non-alphanumeric
+                character
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      {/* Password input */}
+      {/* "Password" input */}
       <div className="form-group">
         <input
           type="password"
@@ -200,7 +204,7 @@ const Signup = props => {
         />
       </div>
 
-      {/* Confirm Password input */}
+      {/* "Confirm Password" input */}
       <div className="form-group">
         <input
           type="password"
@@ -230,7 +234,7 @@ const Signup = props => {
         <span id="confirmPasswordSpan">&nbsp;</span>
       </div>
 
-      {/* Submit button */}
+      {/* "Submit" button */}
       <div className="form-group">
         <button
           className="btn btn-secondary"

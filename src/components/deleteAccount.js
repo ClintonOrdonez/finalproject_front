@@ -26,9 +26,16 @@ const DeleteAccount = props => {
 
   return (
     <div>
-      <h3>Delete Account</h3>
+      {/* "Delete Account" header */}
+      <div className="form-group">
+        <h3>Delete Account</h3>
+        <p>
+          Please enter the email and password for the account currently in use
+          to confirm deletion.
+        </p>
+      </div>
 
-      {/* Email input */}
+      {/* "Email" input */}
       <div className="form-group">
         <input
           id="Email"
@@ -60,7 +67,7 @@ const DeleteAccount = props => {
         <span id="emailSpan">&nbsp;</span>
       </div>
 
-      {/* Password input */}
+      {/* "Password" input */}
       <div className="form-group">
         <input
           id="password"
@@ -78,16 +85,34 @@ const DeleteAccount = props => {
         />
       </div>
 
-      {/* Submit button */}
+      {/* "I understand" checkbox */}
+      <div className="form-group">
+        <p>
+          Once an account has been deleted, all information is erased and cannot
+          be recovered for any reason. Account deletion is instantaneous, and
+          cannot be canceled once submitted.
+        </p>
+        <input id="iUnderstand" type="checkbox" />
+        <span>&nbsp;I understand.</span>
+      </div>
+
+      {/* "Submit" button */}
       <div className="form-group">
         <button
           className="btn btn-secondary"
-          onMouseOver={() => {
-            console.log("email: " + validEmail);
-            console.log("password: " + validPassword);
-          }}
+          // onMouseOver={() => {
+          //   console.log("email: " + validEmail);
+          //   console.log("password: " + validPassword);
+          //   console.log(
+          //     "checked: " + document.getElementById("iUnderstand").checked
+          //   );
+          // }}
           onClick={() => {
-            if (validEmail === true && validPassword === true) {
+            if (
+              validEmail === true &&
+              validPassword === true &&
+              document.getElementById("iUnderstand").checked === true
+            ) {
               alert("User account has been successfully deleted.");
               props.onDeleteAccount(currentEmail);
             } else {

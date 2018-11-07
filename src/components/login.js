@@ -25,9 +25,12 @@ const Login = props => {
 
   return (
     <div>
-      <h3>Login</h3>
+      {/* "Login" header */}
+      <div className="form-group">
+        <h3>Login</h3>
+      </div>
 
-      {/* Email input */}
+      {/* "Email" input */}
       <div className="form-group">
         <input
           type="text"
@@ -58,7 +61,7 @@ const Login = props => {
         />
       </div>
 
-      {/* Password input */}
+      {/* "Password" input */}
       <div className="form-group">
         <input
           id="password"
@@ -83,7 +86,7 @@ const Login = props => {
         />
       </div>
 
-      {/* Submit button */}
+      {/* "Submit" button */}
       <div className="form-group">
         <button
           className="btn btn-secondary"

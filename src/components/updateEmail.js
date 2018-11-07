@@ -33,9 +33,12 @@ const UpdateEmail = props => {
 
   return (
     <div>
-      <h3>Update Email</h3>
+      {/* "Update Email" header */}
+      <div className="form-group">
+        <h3>Update Email</h3>
+      </div>
 
-      {/* New Email input */}
+      {/* "New Email" input */}
       <div className="form-group">
         <span>Current email: {currentEmail}</span>
         <input
@@ -56,17 +59,17 @@ const UpdateEmail = props => {
                   if (result.data.count === 0) {
                     validNewEmail = true;
                     document.getElementById("newEmailSpan").innerHTML =
-                      "Email is valid.";
+                      "Email is a valid format.";
                   } else {
                     validNewEmail = false;
                     document.getElementById("newEmailSpan").innerHTML =
-                      "Email already in use; provide a different email or login to existing account.";
+                      "Email already in use or same as current email; provide a different email.";
                   }
                 });
               } else {
                 validNewEmail = false;
                 document.getElementById("newEmailSpan").innerHTML =
-                  "Not a valid email.";
+                  "Email is an invalid format.";
               }
               // } else {
               //   validNewEmail = false;
@@ -82,7 +85,7 @@ const UpdateEmail = props => {
         <span id="newEmailSpan">&nbsp;</span>
       </div>
 
-      {/* Password input */}
+      {/* "Password input" */}
       <div className="form-group">
         <input
           id="password"
@@ -113,7 +116,7 @@ const UpdateEmail = props => {
         {/* <span id="passwordSpan">&nbsp;</span> */}
       </div>
 
-      {/* Submit button */}
+      {/* "Submit" button */}
       <div className="form-group">
         <button
           className="btn btn-secondary"

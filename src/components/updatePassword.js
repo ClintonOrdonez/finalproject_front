@@ -28,9 +28,12 @@ const UpdatePassword = props => {
 
   return (
     <div>
-      <h3>Update Password</h3>
+      {/* "Update Password" header */}
+      <div className="form-group">
+        <h3>Update Password</h3>
+      </div>
 
-      {/* Current Password input */}
+      {/* "Current Password" input */}
       <div className="form-group">
         <input
           id="currentPassword"
@@ -62,9 +65,9 @@ const UpdatePassword = props => {
         {/* <span id="currentPasswordSpan">&nbsp;</span> */}
       </div>
 
-      {/* Password Requirements table */}
+      {/* "New password requirements" table */}
       <div className="form-group">
-        <h6>New passwords have the following requirements:</h6>
+        <h6>New password requirements:</h6>
         <table align="center">
           <tbody>
             <tr>
@@ -73,7 +76,7 @@ const UpdatePassword = props => {
                   1️⃣&nbsp;
                 </span>
               </td>
-              <td align="left">8 or more characters</td>
+              <td align="left">Length of 8 or more characters</td>
             </tr>
 
             <tr>
@@ -82,7 +85,7 @@ const UpdatePassword = props => {
                   2️⃣&nbsp;
                 </span>
               </td>
-              <td align="left">1 uppercase letter</td>
+              <td align="left">At least 1 uppercase letter</td>
             </tr>
 
             <tr>
@@ -91,7 +94,7 @@ const UpdatePassword = props => {
                   3️⃣&nbsp;
                 </span>
               </td>
-              <td align="left">1 lowercase letter</td>
+              <td align="left">At least 1 lowercase letter</td>
             </tr>
 
             <tr>
@@ -101,7 +104,8 @@ const UpdatePassword = props => {
                 </span>
               </td>
               <td align="left">
-                1 number <i>or</i> 1 non-alphanumeric character
+                At least 1 number <i>and</i>/<i>or</i> 1 non-alphanumeric
+                character
               </td>
             </tr>
 
@@ -117,7 +121,7 @@ const UpdatePassword = props => {
         </table>
       </div>
 
-      {/* New Password input */}
+      {/* "New Password" input */}
       <div className="form-group">
         <input
           id="newPassword"
@@ -218,7 +222,7 @@ const UpdatePassword = props => {
         />
       </div>
 
-      {/* Confirm New Password input */}
+      {/* "Confirm New Password" input */}
       <div className="form-group">
         <input
           id="confirmNewPassword"
@@ -249,7 +253,7 @@ const UpdatePassword = props => {
         <span id="confirmNewPasswordSpan">&nbsp;</span>
       </div>
 
-      {/* Submit button */}
+      {/* "Submit" button */}
       <div className="form-group">
         <button
           className="btn btn-secondary"
