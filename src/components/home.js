@@ -1,11 +1,10 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-    token: state.token,
-    email: state.email
+    email: state.email,
+    token: state.token
   };
 };
 
@@ -21,4 +20,4 @@ const Home = props => (
   </div>
 );
 
-export default withRouter(connect(mapStateToProps)(Home));
+export default connect(mapStateToProps)(Home);

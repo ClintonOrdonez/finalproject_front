@@ -115,12 +115,14 @@ export const UserUpdatePassword = (email, password) => {
 // Searches database by email property
 // Deletes found record from database
 export const UserDeleteAccount = email => {
-  // console.log(email);
+  // console.log("action email: " + email);
   return dispatch => {
     return axios
-      .delete(userURL + "/deleteAccount", { email: email })
+      .delete(userURL + "/deleteAccount", {
+        data: { email: email }
+      })
       .then(response => {
-        // console.log(response);
+        // console.log("response email: " + response.data.email);
         dispatch(UserLogout());
       })
       .catch(error => {

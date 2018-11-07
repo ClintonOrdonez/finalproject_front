@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-    token: state.token,
-    email: state.email
+    email: state.email,
+    token: state.token
   };
 };
 

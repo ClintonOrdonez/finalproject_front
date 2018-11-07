@@ -18,6 +18,7 @@ const mapDispatchToProps = dispatch => {
 const Login = props => {
   let emailRaw;
   let email;
+  let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
   let password;
   let validPassword = false;
@@ -38,17 +39,21 @@ const Login = props => {
           onChange={() => {
             email = emailRaw.value.toLowerCase();
 
-            props.onCheckEmail(email).then(result => {
-              if (result.data.count === 1) {
-                validEmail = true;
-                // console.log("email: " + validEmail);
-              } else {
-                validEmail = false;
-                // console.log("email: " + validEmail);
-                validPassword = false;
-                document.getElementById("password").value = "";
-              }
-            });
+            if (emailRegex.test(email) === true) {
+              props.onCheckEmail(email).then(result => {
+                if (result.data.count === 1) {
+                  validEmail = true;
+                  // console.log("email: " + validEmail);
+                } else {
+                  validEmail = false;
+                  // console.log("email: " + validEmail);
+                  validPassword = false;
+                  document.getElementById("password").value = "";
+                }
+              });
+            } else {
+              validEmail = false;
+            }
           }}
         />
       </div>
@@ -64,13 +69,15 @@ const Login = props => {
             password = p;
           }}
           onChange={() => {
-            props.onCheckEmail(email).then(result => {
-              if (result.data.count === 1) {
-                props.onCheckPassword(email, password.value).then(result => {
-                  validPassword = result.data;
-                });
-              }
-            });
+            if (emailRegex.test(email) === true) {
+              props.onCheckEmail(email).then(result => {
+                if (result.data.count === 1) {
+                  props.onCheckPassword(email, password.value).then(result => {
+                    validPassword = result.data;
+                  });
+                }
+              });
+            }
             // console.log("password: " + validPassword);
           }}
         />
