@@ -18,25 +18,25 @@ const Header = props => (
           [Home]
         </NavLink>
 
-        {(props.token === null || props.token === undefined) && (
+        {props.token === null && (
           <NavLink activeClassName="active" className="nav-link" to="/login">
             [Login]
           </NavLink>
         )}
 
-        {(props.token === null || props.token === undefined) && (
+        {props.token === null && (
           <NavLink activeClassName="active" className="nav-link" to="/signup">
             [Signup]
           </NavLink>
         )}
 
-        {props.token && (
+        {props.token !== null && (
           <NavLink activeClassName="active" className="nav-link" to="/theme">
             [Theme - WIP]
           </NavLink>
         )}
 
-        {props.token && (
+        {props.token !== null && (
           <NavLink
             activeClassName="active"
             className="nav-link"
@@ -46,7 +46,7 @@ const Header = props => (
           </NavLink>
         )}
 
-        {props.token && (
+        {props.token !== null && (
           <NavLink
             activeClassName="active"
             className="nav-link"
@@ -56,7 +56,7 @@ const Header = props => (
           </NavLink>
         )}
 
-        {props.token && (
+        {props.token !== null && (
           <NavLink
             activeClassName="active"
             className="nav-link"
@@ -66,7 +66,7 @@ const Header = props => (
           </NavLink>
         )}
 
-        {props.token && (
+        {props.token !== null && (
           <NavLink activeClassName="active" className="nav-link" to="/logout">
             [Logout]
           </NavLink>

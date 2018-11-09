@@ -2,7 +2,9 @@ import { USER_LOGIN, USER_LOGOUT } from "../actions/types";
 
 const initialState = {
   email: null,
-  token: null
+  token: null,
+  resetPasswordToken: null,
+  resetPasswordExpiration: null
 };
 
 export const reducer = (state = initialState, action) => {

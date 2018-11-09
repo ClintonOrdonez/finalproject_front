@@ -8,6 +8,7 @@ import Signup from "./signup";
 import UpdateEmail from "./updateEmail";
 import UpdatePassword from "./updatePassword";
 import DeleteAccount from "./deleteAccount";
+import ResetPassword from "./resetPassword";
 
 export {
   ProtectedRoute,
@@ -19,5 +20,6 @@ export {
   Signup,
   UpdateEmail,
   UpdatePassword,
-  DeleteAccount
+  DeleteAccount,
+  ResetPassword
 };

@@ -130,3 +130,16 @@ export const UserDeleteAccount = email => {
       });
   };
 };
+
+// Searches database by email property
+// Updates resetPasswordExpiration property with current time plus expirationMinutes
+export const UserResetPassword = email => {
+  return dispatch => {
+    return axios
+      .put(userURL + "/resetPassword", { email: email })
+      .then(response => {})
+      .catch(error => {
+        console.log(error);
+      });
+  };
+};

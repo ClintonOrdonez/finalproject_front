@@ -102,9 +102,9 @@ const Login = props => {
               props.history.push("/");
             } else {
               document.getElementById("submitSpan").innerHTML =
-                "Invalid email and/or password. If password has been forgotten:";
-              document.getElementById("submitLink").innerHTML =
-                "Reset Password";
+                "Invalid email and/or password.";
+              document.getElementById("resetPassword").innerHTML =
+                "Forgotten password?";
             }
           }}
         >
@@ -113,13 +113,7 @@ const Login = props => {
         <br />
         <span id="submitSpan">&nbsp;</span>
         <br />
-        <a
-          id="submitLink"
-          href="#"
-          onClick={() => {
-            props.history.push("/");
-          }}
-        />
+        <a id="resetPassword" href="/resetPassword" />
       </div>
     </div>
   );
