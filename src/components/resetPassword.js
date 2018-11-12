@@ -77,14 +77,14 @@ const ResetPassword = props => {
       <div className="form-group">
         <button
           className="btn btn-secondary"
-          onMouseOver={() => {
-            console.log("email: " + validEmail);
-          }}
+          // onMouseOver={() => {
+          //   console.log("email: " + validEmail);
+          // }}
           onClick={() => {
             if (validEmail === true) {
               props.onResetPassword(email);
               alert(
-                "This should have updated the resetPasswordExpiration property."
+                "Your reset password request has been received. A message from teamgestalt.bot@gmail.com shall be sent shortly."
               );
               document.getElementById("email").value = "";
               document.getElementById("submitSpan").innerHTML = "&nbsp;";
