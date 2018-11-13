@@ -73,10 +73,10 @@ const ResetPassword = props => {
               <span>.</span>
             </p>
           )}
-        {/* {resetPasswordToken !== undefined &&
+        {resetPasswordToken !== undefined &&
           resetPasswordExpiration > currentDate && (
-            <p>Enter a new password below.</p>
-          )} */}
+            <p>Enter a new password for account created with {props.email}.</p>
+          )}
       </div>
 
       {/* "Email" input */}
