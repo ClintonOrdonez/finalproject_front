@@ -16,7 +16,7 @@ const Home = props => (
       This is the landing page for our project. We will create an introduction
       here.
     </p>
-    {props.token && <h3>Welcome {props.email}!</h3>}
+    {props.token !== null && <h3>Welcome {props.email}!</h3>}
   </div>
 );
 

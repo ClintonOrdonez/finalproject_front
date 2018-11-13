@@ -1,8 +1,8 @@
-import { USER_LOGIN, USER_LOGOUT } from "./types";
+import { USER_LOGIN, USER_LOGOUT, USER_RESET_PASSWORD } from "./types";
 import axios from "axios";
 
-// let userURL = "http://localhost:8080/user";
-let userURL = "https://team-gestalt-server.herokuapp.com/user";
+let userURL = "http://localhost:8080/user";
+// let userURL = "https://team-gestalt-server.herokuapp.com/user";
 
 export const UserSignup = (email, password) => {
   return dispatch => {
@@ -141,5 +141,36 @@ export const UserResetPassword = email => {
       .catch(error => {
         console.log(error);
       });
+  };
+};
+
+export const UserFindResetPasswordToken = resetPasswordToken => {
+  return dispatch => {
+    return axios
+      .post(userURL + "/findResetPasswordToken", {
+        resetPasswordToken: resetPasswordToken
+      })
+      .then(response => {
+        dispatch(
+          UserFindResetPasswordTokenSuccess(
+            response.data.email,
+            response.data.resetPasswordExpiration
+          )
+        );
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};
+
+export const UserFindResetPasswordTokenSuccess = (
+  email,
+  resetPasswordExpiration
+) => {
+  return {
+    type: USER_RESET_PASSWORD,
+    email: email,
+    resetPasswordExpiration: resetPasswordExpiration
   };
 };
