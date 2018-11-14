@@ -104,7 +104,7 @@ const Login = props => {
               document.getElementById("submitSpan").innerHTML =
                 "Invalid email and/or password.";
               document.getElementById("resetPassword").innerHTML =
-                "Forgotten password?";
+                "<b>Forgotten password?</b>";
             }
           }}
         >
@@ -113,7 +113,9 @@ const Login = props => {
         <br />
         <span id="submitSpan">&nbsp;</span>
         <br />
-        <a id="resetPassword" href="/resetPassword" />
+        <a id="resetPassword" href="/resetPassword">
+          <b />
+        </a>
       </div>
     </div>
   );

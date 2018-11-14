@@ -28,10 +28,10 @@ const mapDispatchToProps = dispatch => {
 const ResetPassword = props => {
   let URL = window.location.href;
   console.log(URL);
-  // let removeLink = URL.split("http://localhost:3000/resetPassword/");
-  let removeLink = URL.split(
-    "https://team-gestalt-app.herokuapp.com/resetPassword/"
-  );
+  let removeLink = URL.split("http://localhost:3000/resetPassword/");
+  // let removeLink = URL.split(
+  //   "https://team-gestalt-app.herokuapp.com/resetPassword/"
+  // );
   let resetPasswordToken = removeLink[1];
   let resetPasswordExpiration = Date.parse(props.resetPasswordExpiration);
   let currentDate = Date.parse(new Date());
@@ -69,13 +69,29 @@ const ResetPassword = props => {
               <span>
                 Your reset password link has expired; please requeset a{" "}
               </span>
-              <a href="/resetPassword">new email</a>
+              <a href="/resetPassword">
+                <b>new email</b>
+              </a>
               <span>.</span>
             </p>
           )}
         {resetPasswordToken !== undefined &&
           resetPasswordExpiration > currentDate && (
             <p>Enter a new password for account created with {props.email}.</p>
+          )}
+        {resetPasswordToken !== undefined &&
+          props.email === undefined &&
+          props.resetPasswordExpiration === undefined && (
+            <p>
+              <span>
+                This reset password link has already been used or is invalid;
+                please requeset a{" "}
+              </span>
+              <a href="/resetPassword">
+                <b>new email</b>
+              </a>
+              <span>.</span>
+            </p>
           )}
       </div>
 
@@ -309,7 +325,7 @@ const ResetPassword = props => {
                 if (validEmail === true) {
                   props.onResetPassword(email);
                   alert(
-                    "Your reset password request has been received. An email from teamgestalt.bot@gmail.com shall be sent to " +
+                    "An email from teamgestalt.bot@gmail.com shall be sent to " +
                       email +
                       ". Please be aware that the email link will expire in 15 minutes."
                   );
