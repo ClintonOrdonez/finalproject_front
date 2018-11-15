@@ -64,15 +64,12 @@ const Header = props => (
               </button>
 
               <div className="dropdown-menu" aria-labelledby="btnGroupDropdown">
-                {/* <a className="dropdown-item" href="/theme">
-                  Theme - WIP
-                </a> */}
                 <NavLink
                   activeClassName="active"
                   className="nav-link dropdown-item"
                   to="/theme"
                 >
-                  Theme - WIP
+                  Theme
                 </NavLink>
 
                 <NavLink
