@@ -13,64 +13,103 @@ const Header = props => (
   <header className="masthead">
     <div className="inner">
       <h3 className="masthead-brand">Header</h3>
+
       <nav className="nav nav-masthead justify-content-center">
-        <NavLink exact activeClassName="active" className="nav-link" to="/">
-          [Home]
-        </NavLink>
+        <div
+          className="btn-group btn-group-sm"
+          role="group"
+          aria-label="header"
+        >
+          <button type="button" className="btn btn-secondary">
+            <NavLink exact activeClassName="active" className="nav-link" to="/">
+              Home
+            </NavLink>
+          </button>
 
-        {props.token === null && (
-          <NavLink activeClassName="active" className="nav-link" to="/login">
-            [Login]
-          </NavLink>
-        )}
+          {props.token === null && (
+            <button type="button" className="btn btn-secondary">
+              <NavLink
+                activeClassName="active"
+                className="nav-link"
+                to="/login"
+              >
+                Login
+              </NavLink>
+            </button>
+          )}
 
-        {props.token === null && (
-          <NavLink activeClassName="active" className="nav-link" to="/signup">
-            [Signup]
-          </NavLink>
-        )}
+          {props.token === null && (
+            <button type="button" className="btn btn-secondary">
+              <NavLink
+                activeClassName="active"
+                className="nav-link"
+                to="/signup"
+              >
+                Signup
+              </NavLink>
+            </button>
+          )}
 
-        {props.token !== null && (
-          <NavLink activeClassName="active" className="nav-link" to="/theme">
-            [Theme - WIP]
-          </NavLink>
-        )}
+          {props.token !== null && (
+            <div className="btn-group" role="group">
+              <button
+                id="btnGroupDrop1"
+                type="button"
+                className="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                User Options
+              </button>
 
-        {props.token !== null && (
-          <NavLink
-            activeClassName="active"
-            className="nav-link"
-            to="/updateEmail"
-          >
-            [Update Email]
-          </NavLink>
-        )}
+              <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                {/* <a className="dropdown-item" href="/theme">
+                  Theme - WIP
+                </a> */}
+                <NavLink
+                  activeClassName="active"
+                  className="nav-link dropdown-item"
+                  to="/theme"
+                >
+                  Theme - WIP
+                </NavLink>
 
-        {props.token !== null && (
-          <NavLink
-            activeClassName="active"
-            className="nav-link"
-            to="/updatePassword"
-          >
-            [Update Password]
-          </NavLink>
-        )}
+                <NavLink
+                  activeClassName="active"
+                  className="nav-link dropdown-item"
+                  to="/updateEmail"
+                >
+                  Update Email
+                </NavLink>
 
-        {props.token !== null && (
-          <NavLink
-            activeClassName="active"
-            className="nav-link"
-            to="/deleteAccount"
-          >
-            [Delete Account]
-          </NavLink>
-        )}
+                <NavLink
+                  activeClassName="active"
+                  className="nav-link dropdown-item"
+                  to="/updatePassword"
+                >
+                  Update Password
+                </NavLink>
 
-        {props.token !== null && (
-          <NavLink activeClassName="active" className="nav-link" to="/logout">
-            [Logout]
-          </NavLink>
-        )}
+                <NavLink
+                  activeClassName="active"
+                  className="nav-link dropdown-item"
+                  to="/deleteAccount"
+                >
+                  Delete Account
+                </NavLink>
+
+                <NavLink
+                  activeClassName="active"
+                  className="nav-link dropdown-item"
+                  to="/logout"
+                >
+                  Logout
+                </NavLink>
+              </div>
+            </div>
+          )}
+        </div>
       </nav>
     </div>
   </header>
