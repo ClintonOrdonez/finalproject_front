@@ -51,9 +51,9 @@ const Header = props => (
           )}
 
           {props.token !== null && (
-            <div className="btn-group" role="group">
+            <div className="btn-group btn-group-sm" role="group">
               <button
-                id="btnGroupDrop1"
+                id="btnGroupDropdown"
                 type="button"
                 className="btn btn-secondary dropdown-toggle"
                 data-toggle="dropdown"
@@ -63,7 +63,7 @@ const Header = props => (
                 User Options
               </button>
 
-              <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <div className="dropdown-menu" aria-labelledby="btnGroupDropdown">
                 {/* <a className="dropdown-item" href="/theme">
                   Theme - WIP
                 </a> */}
