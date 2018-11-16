@@ -3,6 +3,7 @@ import { USER_LOGIN, USER_LOGOUT, USER_RESET_PASSWORD } from "../actions/types";
 const initialState = {
   email: null,
   token: null,
+  theme: 1,
   resetPasswordExpiration: null
 };
 
@@ -18,7 +19,8 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         email: null,
-        token: null
+        token: null,
+        theme: 1
       };
     case USER_RESET_PASSWORD:
       return {

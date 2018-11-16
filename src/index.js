@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import "./css/welcomepage.css";
+import "./style.css";
 import {
   ProtectedRoute,
   UnprotectedRoute,
@@ -10,6 +10,7 @@ import {
   Login,
   Logout,
   Signup,
+  Theme,
   UpdateEmail,
   UpdatePassword,
   DeleteAccount,
@@ -33,6 +34,7 @@ const App = props => (
           <main className="inner cover mainSection">
             <Switch>
               <Route exact path="/" component={Home} />
+              <ProtectedRoute path="/theme" component={Theme} />
               <ProtectedRoute path="/updateEmail" component={UpdateEmail} />
               <ProtectedRoute
                 path="/updatePassword"

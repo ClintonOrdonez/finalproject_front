@@ -85,15 +85,19 @@ const DeleteAccount = props => {
         />
       </div>
 
-      {/* "I understand" checkbox */}
+      {/* "I Understand" checkbox */}
       <div className="form-group">
         <p>
           Once an account has been deleted, all information is erased and cannot
           be recovered for any reason. Account deletion is instantaneous, and
           cannot be canceled once submitted.
         </p>
-        <input id="iUnderstand" type="checkbox" />
-        <span>&nbsp;I understand.</span>
+        <div className="btn-group-toggle" data-toggle="buttons">
+          <label className="btn btn-secondary">
+            <input id="iUnderstand" type="checkbox" autoComplete="off" />I
+            Understand
+          </label>
+        </div>
       </div>
 
       {/* "Submit" button */}

@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
 
 const ResetPassword = props => {
   let URL = window.location.href;
-  console.log(URL);
+  // console.log(URL);
   let removeLink = URL.split("http://localhost:3000/resetPassword/");
   // let removeLink = URL.split(
   //   "https://team-gestalt-app.herokuapp.com/resetPassword/"
@@ -35,7 +35,7 @@ const ResetPassword = props => {
   let resetPasswordToken = removeLink[1];
   let resetPasswordExpiration = Date.parse(props.resetPasswordExpiration);
   let currentDate = Date.parse(new Date());
-  console.log(resetPasswordToken);
+  // console.log(resetPasswordToken);
   // "Email" input variables
   let emailRaw;
   let email;
@@ -51,8 +51,8 @@ const ResetPassword = props => {
 
   if (resetPasswordToken !== undefined) {
     props.onFindResetPasswordToken(resetPasswordToken).then(result => {
-      console.log(props.email);
-      console.log(props.resetPasswordExpiration);
+      // console.log(props.email);
+      // console.log(props.resetPasswordExpiration);
     });
   }
 

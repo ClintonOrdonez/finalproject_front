@@ -5,6 +5,7 @@ import Header from "./header";
 import Login from "./login";
 import Logout from "./logout";
 import Signup from "./signup";
+import Theme from "./theme";
 import UpdateEmail from "./updateEmail";
 import UpdatePassword from "./updatePassword";
 import DeleteAccount from "./deleteAccount";
@@ -18,6 +19,7 @@ export {
   Login,
   Logout,
   Signup,
+  Theme,
   UpdateEmail,
   UpdatePassword,
   DeleteAccount,

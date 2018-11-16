@@ -22,7 +22,13 @@ export const UserLogin = (email, password) => {
     return axios
       .post(userURL + "/login", { email: email, password: password })
       .then(response => {
-        dispatch(UserLoginSuccess(response.data.email, response.data._id));
+        dispatch(
+          UserLoginSuccess(
+            response.data.email,
+            response.data._id,
+            response.data.theme
+          )
+        );
       })
       .catch(error => {
         throw error;
@@ -30,11 +36,12 @@ export const UserLogin = (email, password) => {
   };
 };
 
-export const UserLoginSuccess = (email, token) => {
+export const UserLoginSuccess = (email, token, theme) => {
   return {
     type: USER_LOGIN,
     email: email,
-    token: token
+    token: token,
+    theme: theme
   };
 };
 
