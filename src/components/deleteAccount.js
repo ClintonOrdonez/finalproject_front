@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
 import { UserCheckPassword, UserDeleteAccount } from "../actions/userActions";
 
 const mapStateToProps = state => {
@@ -93,17 +94,19 @@ const DeleteAccount = props => {
           cannot be canceled once submitted.
         </p>
         <div className="btn-group-toggle" data-toggle="buttons">
-          <label className="btn btn-secondary">
+          <label className="btn btn-outline-warning">
             <input id="iUnderstand" type="checkbox" autoComplete="off" />I
             Understand
           </label>
         </div>
       </div>
 
-      {/* "Submit" button */}
+      {/* "Delete" button */}
       <div className="form-group">
-        <button
-          className="btn btn-secondary"
+        <Button
+          outline
+          color="danger"
+          // className="btn btn-secondary"
           // onMouseOver={() => {
           //   console.log("email: " + validEmail);
           //   console.log("password: " + validPassword);
@@ -120,15 +123,15 @@ const DeleteAccount = props => {
               alert("User account has been successfully deleted.");
               props.onDeleteAccount(currentEmail);
             } else {
-              document.getElementById("submitSpan").innerHTML =
+              document.getElementById("deleteSpan").innerHTML =
                 "Please satisfy all the above fields.";
             }
           }}
         >
-          Submit
-        </button>
+          Delete
+        </Button>
         <br />
-        <span id="submitSpan">&nbsp;</span>
+        <span id="deleteSpan">&nbsp;</span>
       </div>
     </div>
   );

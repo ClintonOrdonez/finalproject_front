@@ -39,6 +39,7 @@ const ResetPassword = props => {
   // "Email" input variables
   let emailRaw;
   let email;
+  let accountEmail = props.email;
   // eslint-disable-next-line
   let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
@@ -78,10 +79,10 @@ const ResetPassword = props => {
           )}
         {resetPasswordToken !== undefined &&
           resetPasswordExpiration > currentDate && (
-            <p>Enter a new password for account created with {props.email}.</p>
+            <p>Enter a new password for account created with {accountEmail}.</p>
           )}
         {resetPasswordToken !== undefined &&
-          props.email === undefined &&
+          accountEmail === undefined &&
           props.resetPasswordExpiration === undefined && (
             <p>
               <span>
@@ -339,7 +340,7 @@ const ResetPassword = props => {
                 }
               } else {
                 if (validNewPassword === true && matchNewPassword === true) {
-                  props.onUpdatePassword(props.email, newPassword.value);
+                  props.onUpdatePassword(accountEmail, newPassword.value);
                   alert(
                     "Password has been reset successfully; logging in now."
                   );

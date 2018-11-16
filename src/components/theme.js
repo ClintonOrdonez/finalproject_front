@@ -29,14 +29,25 @@ const Theme = props => {
       <ButtonGroup>
         <Button
           onClick={() => {
-            console.log("blue");
             document.documentElement.style.setProperty("--color1", "blue");
           }}
         >
           Theme 1
         </Button>
-        <Button>Theme 2</Button>
-        <Button>Theme 3</Button>
+        <Button
+          onClick={() => {
+            document.documentElement.style.setProperty("--color1", "red");
+          }}
+        >
+          Theme 2
+        </Button>
+        <Button
+          onClick={() => {
+            document.documentElement.style.setProperty("--color1", "yellow");
+          }}
+        >
+          Theme 3
+        </Button>
       </ButtonGroup>
     </div>
   );

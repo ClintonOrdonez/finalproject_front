@@ -1,115 +1,138 @@
-import React from "react";
+import React, { Component } from "react";
+import {
+  Button,
+  ButtonGroup,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-    email: state.email,
     token: state.token
   };
 };
 
-const Header = props => (
-  <header className="masthead">
-    <div className="inner">
-      <h3 className="masthead-brand">Header</h3>
+class Header extends Component {
+  constructor(props) {
+    super(props);
 
-      <nav className="nav nav-masthead justify-content-center">
-        <div
-          className="btn-group btn-group-sm"
-          role="group"
-          aria-label="header"
-        >
-          <button type="button" className="btn btn-secondary">
-            <NavLink exact activeClassName="active" className="nav-link" to="/">
-              Home
-            </NavLink>
-          </button>
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
+  }
 
-          {props.token === null && (
-            <button type="button" className="btn btn-secondary">
-              <NavLink
-                activeClassName="active"
-                className="nav-link"
-                to="/login"
-              >
-                Login
-              </NavLink>
-            </button>
-          )}
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 
-          {props.token === null && (
-            <button type="button" className="btn btn-secondary">
-              <NavLink
-                activeClassName="active"
-                className="nav-link"
-                to="/signup"
-              >
-                Signup
-              </NavLink>
-            </button>
-          )}
+  render() {
+    return (
+      <header className="masthead">
+        <div className="inner">
+          <h3 className="masthead-brand">Header</h3>
 
-          {props.token !== null && (
-            <div className="btn-group btn-group-sm" role="group">
-              <button
-                id="btnGroupDropdown"
-                type="button"
-                className="btn btn-secondary dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                User Options
-              </button>
-
-              <div className="dropdown-menu" aria-labelledby="btnGroupDropdown">
+          <nav className="nav nav-masthead justify-content-center">
+            <ButtonGroup size="sm">
+              <Button>
                 <NavLink
+                  exact
                   activeClassName="active"
-                  className="nav-link dropdown-item"
-                  to="/theme"
+                  className="nav-link"
+                  to="/"
                 >
-                  Theme
+                  Home
                 </NavLink>
-
-                <NavLink
-                  activeClassName="active"
-                  className="nav-link dropdown-item"
-                  to="/updateEmail"
+              </Button>
+              {this.props.token === null && (
+                <Button>
+                  <NavLink
+                    activeClassName="active"
+                    className="nav-link"
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
+                </Button>
+              )}
+              {this.props.token === null && (
+                <Button>
+                  <NavLink
+                    activeClassName="active"
+                    className="nav-link"
+                    to="/signup"
+                  >
+                    Signup
+                  </NavLink>
+                </Button>
+              )}
+              {this.props.token !== null && (
+                <ButtonDropdown
+                  isOpen={this.state.dropdownOpen}
+                  toggle={this.toggle}
                 >
-                  Update Email
-                </NavLink>
-
-                <NavLink
-                  activeClassName="active"
-                  className="nav-link dropdown-item"
-                  to="/updatePassword"
-                >
-                  Update Password
-                </NavLink>
-
-                <NavLink
-                  activeClassName="active"
-                  className="nav-link dropdown-item"
-                  to="/deleteAccount"
-                >
-                  Delete Account
-                </NavLink>
-
-                <NavLink
-                  activeClassName="active"
-                  className="nav-link dropdown-item"
-                  to="/logout"
-                >
-                  Logout
-                </NavLink>
-              </div>
-            </div>
-          )}
+                  <DropdownToggle caret>User Options</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <NavLink
+                        activeClassName="active"
+                        className="nav-link dropdown-item"
+                        to="/theme"
+                      >
+                        Theme
+                      </NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <NavLink
+                        activeClassName="active"
+                        className="nav-link dropdown-item"
+                        to="/updateEmail"
+                      >
+                        Update Email
+                      </NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <NavLink
+                        activeClassName="active"
+                        className="nav-link dropdown-item"
+                        to="/updatePassword"
+                      >
+                        Update Password
+                      </NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <NavLink
+                        activeClassName="active"
+                        className="nav-link dropdown-item"
+                        to="/deleteAccount"
+                      >
+                        Delete Account
+                      </NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <NavLink
+                        activeClassName="active"
+                        className="nav-link dropdown-item"
+                        to="/logout"
+                      >
+                        Logout
+                      </NavLink>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
+              )}
+            </ButtonGroup>
+          </nav>
         </div>
-      </nav>
-    </div>
-  </header>
-);
+      </header>
+    );
+  }
+}
 
 export default withRouter(connect(mapStateToProps)(Header));
