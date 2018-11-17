@@ -32,11 +32,15 @@ const Theme = props => {
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "blue");
+<<<<<<< HEAD
             document.documentElement.style.setProperty("--color2", "blue");
             document.documentElement.style.setProperty("--color3", "blue");
             document.documentElement.style.setProperty("--color4", "blue");
             document.documentElement.style.setProperty("--color5", "blue");
             document.documentElement.style.setProperty("--color6", "blue");
+=======
+            document.documentElement.style.setProperty("--color2", "teal");
+>>>>>>> 2485715467e0a270f920811e6b46c2fd9b788625
           }}
         >
           Theme 1
@@ -45,11 +49,15 @@ const Theme = props => {
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "red");
+<<<<<<< HEAD
             document.documentElement.style.setProperty("--color2", "blue");
             document.documentElement.style.setProperty("--color3", "blue");
             document.documentElement.style.setProperty("--color4", "blue");
             document.documentElement.style.setProperty("--color5", "blue");
             document.documentElement.style.setProperty("--color6", "blue");
+=======
+            document.documentElement.style.setProperty("--color2", "orange");
+>>>>>>> 2485715467e0a270f920811e6b46c2fd9b788625
           }}
         >
           Theme 2
@@ -70,11 +78,15 @@ const Theme = props => {
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "yellow");
+<<<<<<< HEAD
             document.documentElement.style.setProperty("--color2", "blue");
             document.documentElement.style.setProperty("--color3", "blue");
             document.documentElement.style.setProperty("--color4", "blue");
             document.documentElement.style.setProperty("--color5", "blue");
             document.documentElement.style.setProperty("--color6", "blue");
+=======
+            document.documentElement.style.setProperty("--color2", "green");
+>>>>>>> 2485715467e0a270f920811e6b46c2fd9b788625
           }}
         >
           Theme 3
