@@ -30,6 +30,7 @@ const Theme = props => {
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "blue");
+            document.documentElement.style.setProperty("--color2", "teal");
           }}
         >
           Theme 1
@@ -37,6 +38,7 @@ const Theme = props => {
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "red");
+            document.documentElement.style.setProperty("--color2", "orange");
           }}
         >
           Theme 2
@@ -44,6 +46,7 @@ const Theme = props => {
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "yellow");
+            document.documentElement.style.setProperty("--color2", "green");
           }}
         >
           Theme 3

@@ -1,6 +1,10 @@
 /* Color variables */
 :root {
   --color1: #fff;
+  --color2: #111;
+  --color3: #333;
+  --color4: rgba(0, 0, 0, 0.5);
+  --color5: rgba(255, 255, 255, 0.5);
 }
 
 /*
@@ -18,7 +22,7 @@ a:hover {
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
+  color: var(--color3);
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: var(--color1);
   border: 0.05rem solid var(--color1);
@@ -32,7 +36,13 @@ html,
 body {
   height: 100%;
   /* background-color: #333; */
-  background: linear-gradient(90deg, #111, #333 15%, #333 85%, #111);
+  background: linear-gradient(
+    90deg,
+    var(--color2),
+    var(--color3) 15%,
+    var(--color3) 85%,
+    var(--color2)
+  );
   font-size: 20px;
 }
 
@@ -44,7 +54,7 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   color: var(--color1);
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.05rem 0.1rem var(--color4);
 }
 
 .cover-container {
@@ -65,7 +75,7 @@ body {
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color5);
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
 }
@@ -108,7 +118,7 @@ body {
  * Footer
  */
 .mastfoot {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color5);
 }
 
 .mainSection {
