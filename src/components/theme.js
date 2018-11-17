@@ -26,24 +26,55 @@ const Theme = props => {
       </div>
 
       {/* button group */}
+
       <ButtonGroup>
+        {/* {Light Theme} */}
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "blue");
+            document.documentElement.style.setProperty("--color2", "blue");
+            document.documentElement.style.setProperty("--color3", "blue");
+            document.documentElement.style.setProperty("--color4", "blue");
+            document.documentElement.style.setProperty("--color5", "blue");
+            document.documentElement.style.setProperty("--color6", "blue");
           }}
         >
           Theme 1
         </Button>
+        {/* {Dark Theme} */}
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "red");
+            document.documentElement.style.setProperty("--color2", "blue");
+            document.documentElement.style.setProperty("--color3", "blue");
+            document.documentElement.style.setProperty("--color4", "blue");
+            document.documentElement.style.setProperty("--color5", "blue");
+            document.documentElement.style.setProperty("--color6", "blue");
           }}
         >
           Theme 2
         </Button>
+        {/* {Extra Theme} */}
         <Button
           onClick={() => {
             document.documentElement.style.setProperty("--color1", "yellow");
+            document.documentElement.style.setProperty("--color2", "blue");
+            document.documentElement.style.setProperty("--color3", "blue");
+            document.documentElement.style.setProperty("--color4", "blue");
+            document.documentElement.style.setProperty("--color5", "blue");
+            document.documentElement.style.setProperty("--color6", "blue");
+          }}
+        >
+          Theme 3
+        </Button>
+        <Button
+          onClick={() => {
+            document.documentElement.style.setProperty("--color1", "yellow");
+            document.documentElement.style.setProperty("--color2", "blue");
+            document.documentElement.style.setProperty("--color3", "blue");
+            document.documentElement.style.setProperty("--color4", "blue");
+            document.documentElement.style.setProperty("--color5", "blue");
+            document.documentElement.style.setProperty("--color6", "blue");
           }}
         >
           Theme 3

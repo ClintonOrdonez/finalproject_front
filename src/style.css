@@ -1,41 +1,46 @@
 /* Color variables */
 :root {
   --color1: #fff;
+  --color2: #111;
+  --color3: #333;
+  --color4: rgba(0, 0, 0, 0.5);
+  --color5: rgba(255, 255, 255, 0.5);
+  --color6: rgba(255, 255, 255, 0.25);
 }
-
 /*
  * Globals
  */
-
 /* Links */
 a,
 a:focus,
 a:hover {
   color: var(--color1);
 }
-
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
+  color: var(--color3);
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: var(--color1);
+  background-color: var(--color5);
   border: 0.05rem solid var(--color1);
 }
-
 /*
  * Base structure
  */
-
 html,
 body {
   height: 100%;
   /* background-color: #333; */
-  background: linear-gradient(90deg, #111, #333 15%, #333 85%, #111);
+  background: linear-gradient(
+    90deg,
+    var(--color2),
+    var(--color3) 15%,
+    var(--color3) 85%,
+    var(--color2)
+  );
   font-size: 20px;
 }
-
 body {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -44,46 +49,38 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   color: var(--color1);
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.05rem 0.1rem var(--color4);
 }
-
 .cover-container {
   max-width: 42em;
 }
-
 /*
  * Header
  */
 .masthead {
   margin-bottom: 2rem;
 }
-
 .masthead-brand {
   margin-bottom: 0;
 }
-
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color5);
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
 }
-
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, 0.25);
+  border-bottom-color: var(--color6);
 }
-
 .nav-masthead .nav-link + .nav-link {
   margin-left: 1rem;
 }
-
 .nav-masthead .active {
   color: var(--color1);
   border-bottom-color: var(--color1);
 }
-
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
@@ -92,7 +89,6 @@ body {
     float: right;
   }
 }
-
 /*
  * Cover
  */
@@ -103,24 +99,20 @@ body {
   padding: 0.75rem 1.25rem;
   font-weight: 700;
 }
-
 /*
  * Footer
  */
 .mastfoot {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color5);
 }
-
 .mainSection {
   width: 75vw;
   max-width: 40em;
 }
-
 .badge-primary {
   color: white;
   background-color: #000000;
 }
-
 .notfound {
   font-size: 8em;
 }
