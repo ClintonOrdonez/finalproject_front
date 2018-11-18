@@ -39,7 +39,6 @@ const DeleteAccount = props => {
       {/* "Email" input */}
       <div className="form-group">
         <input
-          id="Email"
           type="text"
           className="form-control"
           placeholder="Email"
@@ -71,7 +70,6 @@ const DeleteAccount = props => {
       {/* "Password" input */}
       <div className="form-group">
         <input
-          id="password"
           type="password"
           className="form-control"
           placeholder="Password"
@@ -86,19 +84,15 @@ const DeleteAccount = props => {
         />
       </div>
 
-      {/* "I Understand" checkbox */}
+      {/* "I understand." checkbox */}
       <div className="form-group">
         <p>
           Once an account has been deleted, all information is erased and cannot
           be recovered for any reason. Account deletion is instantaneous, and
           cannot be canceled once submitted.
         </p>
-        <div className="btn-group-toggle" data-toggle="buttons">
-          <label className="btn btn-outline-warning">
-            <input id="iUnderstand" type="checkbox" autoComplete="off" />I
-            Understand
-          </label>
-        </div>
+        <input id="iUnderstand" type="checkbox" />
+        <span>&nbsp;I understand.</span>
       </div>
 
       {/* "Delete" button */}
@@ -106,14 +100,13 @@ const DeleteAccount = props => {
         <Button
           outline
           color="danger"
-          // className="btn btn-secondary"
-          // onMouseOver={() => {
-          //   console.log("email: " + validEmail);
-          //   console.log("password: " + validPassword);
-          //   console.log(
-          //     "checked: " + document.getElementById("iUnderstand").checked
-          //   );
-          // }}
+          onMouseOver={() => {
+            console.log("email: " + validEmail);
+            console.log("password: " + validPassword);
+            console.log(
+              "checked: " + document.getElementById("iUnderstand").checked
+            );
+          }}
           onClick={() => {
             if (
               validEmail === true &&

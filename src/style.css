@@ -1,11 +1,11 @@
 /* Color variables */
 :root {
-  --color1: #fff;
-  --color2: #111;
-  --color3: #333;
-  --color4: rgba(0, 0, 0, 0.5);
-  --color5: rgba(255, 255, 255, 0.5);
-  --color6: rgba(255, 255, 255, 0.25);
+  --color1: #000;
+  --color2: #eee;
+  --color3: #ccc;
+  --color4: rgba(255, 255, 255, 0.5);
+  --color5: rgba(0, 0, 0, 0.5);
+  --color6: rgba(0, 0, 0, 0.25);
 }
 /*
  * Globals

@@ -26,33 +26,50 @@ const Theme = props => {
       </div>
 
       {/* button group */}
-
       <ButtonGroup>
         {/* {Light Theme} */}
         <Button
           onClick={() => {
-            document.documentElement.style.setProperty("--color1", "blue");
-            document.documentElement.style.setProperty("--color2", "blue");
-            document.documentElement.style.setProperty("--color3", "blue");
-            document.documentElement.style.setProperty("--color4", "blue");
-            document.documentElement.style.setProperty("--color5", "blue");
-            document.documentElement.style.setProperty("--color6", "blue");
+            document.documentElement.style.setProperty("--color1", "#000");
+            document.documentElement.style.setProperty("--color2", "#eee");
+            document.documentElement.style.setProperty("--color3", "#ccc");
+            document.documentElement.style.setProperty(
+              "--color4",
+              "rgba(255, 255, 255, 0.5)"
+            );
+            document.documentElement.style.setProperty(
+              "--color5",
+              "rgba(0, 0, 0, 0.5)"
+            );
+            document.documentElement.style.setProperty(
+              "--color6",
+              "rgba(0, 0, 0, 0.25)"
+            );
           }}
         >
-          Theme 1
+          Light
         </Button>
         {/* {Dark Theme} */}
         <Button
           onClick={() => {
-            document.documentElement.style.setProperty("--color1", "red");
-            document.documentElement.style.setProperty("--color2", "blue");
-            document.documentElement.style.setProperty("--color3", "blue");
-            document.documentElement.style.setProperty("--color4", "blue");
-            document.documentElement.style.setProperty("--color5", "blue");
-            document.documentElement.style.setProperty("--color6", "blue");
+            document.documentElement.style.setProperty("--color1", "#fff");
+            document.documentElement.style.setProperty("--color2", "#111");
+            document.documentElement.style.setProperty("--color3", "#333");
+            document.documentElement.style.setProperty(
+              "--color4",
+              "rgba(0, 0, 0, 0.5)"
+            );
+            document.documentElement.style.setProperty(
+              "--color5",
+              "rgba(255, 255, 255, 0.5)"
+            );
+            document.documentElement.style.setProperty(
+              "--color6",
+              "rgba(255, 255, 255, 0.25)"
+            );
           }}
         >
-          Theme 2
+          Dark
         </Button>
         {/* {Extra Theme} */}
         <Button
@@ -77,7 +94,7 @@ const Theme = props => {
             document.documentElement.style.setProperty("--color6", "blue");
           }}
         >
-          Theme 3
+          Theme 4
         </Button>
       </ButtonGroup>
     </div>
