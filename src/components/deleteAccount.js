@@ -21,7 +21,7 @@ class DeleteAccount extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { cSelected: [], checked: false };
+    this.state = { cSelected: [] };
 
     this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
   }
@@ -63,10 +63,7 @@ class DeleteAccount extends Component {
             color="warning"
             onClick={() => {
               this.onCheckboxBtnClick(1);
-              this.setState({
-                checked: !this.state.checked
-              });
-              console.log(this.state.checked);
+              console.log(this.state.cSelected);
             }}
             active={this.state.cSelected.includes(1)}
           >
@@ -75,7 +72,7 @@ class DeleteAccount extends Component {
         </div>
 
         {/* "Email" input */}
-        {this.state.checked === true && (
+        {this.state.cSelected.includes(1) && (
           <div className="form-group">
             <p>
               Please enter the email and password for the current account to
@@ -113,7 +110,7 @@ class DeleteAccount extends Component {
         )}
 
         {/* "Password" input */}
-        {this.state.checked === true && (
+        {this.state.cSelected.includes(1) && (
           <div className="form-group">
             <input
               id="password"
@@ -135,7 +132,7 @@ class DeleteAccount extends Component {
         )}
 
         {/* "Delete" button */}
-        {this.state.checked === true && (
+        {this.state.cSelected.includes(1) && (
           <div className="form-group">
             <Button
               id="delete"
@@ -150,7 +147,7 @@ class DeleteAccount extends Component {
                 if (
                   validEmail === true &&
                   validPassword === true &&
-                  this.state.checked === true
+                  this.state.cSelected.includes(1)
                 ) {
                   alert("User account has been successfully deleted.");
                   this.props.onDeleteAccount(accountEmail);
