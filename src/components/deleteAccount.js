@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 import { UserCheckPassword, UserDeleteAccount } from "../actions/userActions";
@@ -17,118 +17,159 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const DeleteAccount = props => {
-  let currentEmail = props.email;
-  let emailRaw;
-  let email;
-  let validEmail = false;
-  let password;
-  let validPassword = false;
+class DeleteAccount extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div>
-      {/* "Delete Account" header */}
-      <div className="form-group">
-        <h3>Delete Account</h3>
-        <p>
-          Please enter the email and password for the account currently in use
-          to confirm deletion.
-        </p>
+    this.state = { cSelected: [], checked: false };
+
+    this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
+  }
+
+  onCheckboxBtnClick(selected) {
+    const index = this.state.cSelected.indexOf(selected);
+    if (index < 0) {
+      this.state.cSelected.push(selected);
+    } else {
+      this.state.cSelected.splice(index, 1);
+    }
+    this.setState({ cSelected: [...this.state.cSelected] });
+  }
+
+  render() {
+    let accountEmail = this.props.email;
+    let emailRaw;
+    let email;
+    let validEmail = false;
+    let password;
+    let validPassword = false;
+
+    return (
+      <div>
+        {/* "Delete Account" header */}
+        <div className="form-group">
+          <h3>Delete Account</h3>
+        </div>
+
+        {/* "I Understand" checkbox */}
+        <div className="form-group">
+          <p>
+            Once an account has been deleted, all information is erased and
+            cannot be recovered for any reason. Account deletion is
+            instantaneous, and cannot be canceled once submitted.
+          </p>
+          <Button
+            outline
+            color="warning"
+            onClick={() => {
+              this.onCheckboxBtnClick(1);
+              this.setState({
+                checked: !this.state.checked
+              });
+              console.log(this.state.checked);
+            }}
+            active={this.state.cSelected.includes(1)}
+          >
+            I Understand
+          </Button>
+        </div>
+
+        {/* "Email" input */}
+        {this.state.checked === true && (
+          <div className="form-group">
+            <p>
+              Please enter the email and password for the current account to
+              confirm deletion.
+            </p>
+            <input
+              id="email"
+              type="text"
+              className="form-control"
+              placeholder="Email"
+              ref={eR => {
+                emailRaw = eR;
+              }}
+              onChange={() => {
+                email = emailRaw.value.toLowerCase();
+
+                if (email !== "") {
+                  if (email === accountEmail) {
+                    validEmail = true;
+                    document.getElementById("emailSpan").innerHTML =
+                      "Email matches account email.";
+                  } else {
+                    validEmail = false;
+                    document.getElementById("emailSpan").innerHTML =
+                      "Email does not match account email.";
+                  }
+                } else {
+                  validEmail = false;
+                  document.getElementById("emailSpan").innerHTML = "&nbsp;";
+                }
+              }}
+            />
+            <span id="emailSpan">&nbsp;</span>
+          </div>
+        )}
+
+        {/* "Password" input */}
+        {this.state.checked === true && (
+          <div className="form-group">
+            <input
+              id="password"
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              ref={p => {
+                password = p;
+              }}
+              onChange={() => {
+                this.props
+                  .onCheckPassword(accountEmail, password.value)
+                  .then(result => {
+                    validPassword = result.data;
+                  });
+              }}
+            />
+          </div>
+        )}
+
+        {/* "Delete" button */}
+        {this.state.checked === true && (
+          <div className="form-group">
+            <Button
+              id="delete"
+              outline
+              color="danger"
+              onMouseOver={() => {
+                console.log("email: " + validEmail);
+                console.log("password: " + validPassword);
+                console.log("checked: " + this.state.checked);
+              }}
+              onClick={() => {
+                if (
+                  validEmail === true &&
+                  validPassword === true &&
+                  this.state.checked === true
+                ) {
+                  alert("User account has been successfully deleted.");
+                  this.props.onDeleteAccount(accountEmail);
+                } else {
+                  document.getElementById("deleteSpan").innerHTML =
+                    "Please satisfy all the above fields.";
+                }
+              }}
+            >
+              Delete
+            </Button>
+            <br />
+            <span id="deleteSpan">&nbsp;</span>
+          </div>
+        )}
       </div>
-
-      {/* "Email" input */}
-      <div className="form-group">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Email"
-          ref={eR => {
-            emailRaw = eR;
-          }}
-          onChange={() => {
-            email = emailRaw.value.toLowerCase();
-
-            if (email !== "") {
-              if (email === currentEmail) {
-                validEmail = true;
-                document.getElementById("emailSpan").innerHTML =
-                  "Email matches account email.";
-              } else {
-                validEmail = false;
-                document.getElementById("emailSpan").innerHTML =
-                  "Email does not match account email.";
-              }
-            } else {
-              validEmail = false;
-              document.getElementById("emailSpan").innerHTML = "&nbsp;";
-            }
-          }}
-        />
-        <span id="emailSpan">&nbsp;</span>
-      </div>
-
-      {/* "Password" input */}
-      <div className="form-group">
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Password"
-          ref={p => {
-            password = p;
-          }}
-          onChange={() => {
-            props.onCheckPassword(currentEmail, password.value).then(result => {
-              validPassword = result.data;
-            });
-          }}
-        />
-      </div>
-
-      {/* "I understand." checkbox */}
-      <div className="form-group">
-        <p>
-          Once an account has been deleted, all information is erased and cannot
-          be recovered for any reason. Account deletion is instantaneous, and
-          cannot be canceled once submitted.
-        </p>
-        <input id="iUnderstand" type="checkbox" />
-        <span>&nbsp;I understand.</span>
-      </div>
-
-      {/* "Delete" button */}
-      <div className="form-group">
-        <Button
-          outline
-          color="danger"
-          onMouseOver={() => {
-            console.log("email: " + validEmail);
-            console.log("password: " + validPassword);
-            console.log(
-              "checked: " + document.getElementById("iUnderstand").checked
-            );
-          }}
-          onClick={() => {
-            if (
-              validEmail === true &&
-              validPassword === true &&
-              document.getElementById("iUnderstand").checked === true
-            ) {
-              alert("User account has been successfully deleted.");
-              props.onDeleteAccount(currentEmail);
-            } else {
-              document.getElementById("deleteSpan").innerHTML =
-                "Please satisfy all the above fields.";
-            }
-          }}
-        >
-          Delete
-        </Button>
-        <br />
-        <span id="deleteSpan">&nbsp;</span>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default connect(
   mapStateToProps,
