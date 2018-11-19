@@ -62,7 +62,6 @@ const UpdatePassword = props => {
             }
           }}
         />
-        {/* <span id="currentPasswordSpan">&nbsp;</span> */}
       </div>
 
       {/* "New password requirements" table */}

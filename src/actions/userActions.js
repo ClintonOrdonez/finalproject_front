@@ -151,15 +151,15 @@ export const UserResetPassword = email => {
   };
 };
 
-export const UserFindResetPasswordToken = resetPasswordToken => {
+export const UserCheckResetPasswordToken = resetPasswordToken => {
   return dispatch => {
     return axios
-      .post(userURL + "/findResetPasswordToken", {
+      .post(userURL + "/checkResetPasswordToken", {
         resetPasswordToken: resetPasswordToken
       })
       .then(response => {
         dispatch(
-          UserFindResetPasswordTokenSuccess(
+          UserCheckResetPasswordTokenSuccess(
             response.data.email,
             response.data.resetPasswordExpiration
           )
@@ -171,7 +171,7 @@ export const UserFindResetPasswordToken = resetPasswordToken => {
   };
 };
 
-export const UserFindResetPasswordTokenSuccess = (
+export const UserCheckResetPasswordTokenSuccess = (
   email,
   resetPasswordExpiration
 ) => {

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   UserCheckEmail,
   UserResetPassword,
-  UserFindResetPasswordToken,
+  UserCheckResetPasswordToken,
   UserUpdatePassword
 } from "../actions/userActions";
 
@@ -18,8 +18,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onCheckEmail: email => dispatch(UserCheckEmail(email)),
     onResetPassword: email => dispatch(UserResetPassword(email)),
-    onFindResetPasswordToken: resetPasswordToken =>
-      dispatch(UserFindResetPasswordToken(resetPasswordToken)),
+    onCheckResetPasswordToken: resetPasswordToken =>
+      dispatch(UserCheckResetPasswordToken(resetPasswordToken)),
     onUpdatePassword: (email, password) =>
       dispatch(UserUpdatePassword(email, password))
   };
@@ -51,7 +51,7 @@ const ResetPassword = props => {
   let matchNewPassword = false;
 
   if (resetPasswordToken !== undefined) {
-    props.onFindResetPasswordToken(resetPasswordToken).then(result => {
+    props.onCheckResetPasswordToken(resetPasswordToken).then(result => {
       // console.log(props.email);
       // console.log(props.resetPasswordExpiration);
     });
