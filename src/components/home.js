@@ -8,16 +8,18 @@ const mapStateToProps = state => {
   };
 };
 
-const Home = props => (
-  <div>
-    <h3 className="cover-heading">Home</h3>
+const Home = props => {
+  return (
+    <div>
+      <h3 className="cover-heading">Home</h3>
 
-    <p className="lead">
-      This is the landing page for our project. We will create an introduction
-      here.
-    </p>
-    {props.token !== null && <h3>Welcome {props.email}!</h3>}
-  </div>
-);
+      <p className="lead">
+        This is the landing page for our project. We will create an introduction
+        here.
+      </p>
+      {props.token !== null && <h3>Welcome {props.email}!</h3>}
+    </div>
+  );
+};
 
 export default connect(mapStateToProps)(Home);

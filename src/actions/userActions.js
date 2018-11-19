@@ -1,4 +1,9 @@
-import { USER_LOGIN, USER_LOGOUT, USER_RESET_PASSWORD } from "./types";
+import {
+  USER_LOGIN,
+  USER_LOGOUT,
+  USER_UPDATE_PASSWORD,
+  USER_RESET_PASSWORD
+} from "./types";
 import axios from "axios";
 
 let userURL = "http://localhost:8080/user";
@@ -112,10 +117,17 @@ export const UserUpdatePassword = (email, password) => {
       .then(response => {
         // console.log(response);
         dispatch(UserLogin(response.data.email, password));
+        dispatch(UserUpdatePasswordSuccess());
       })
       .catch(error => {
         console.log(error);
       });
+  };
+};
+
+export const UserUpdatePasswordSuccess = () => {
+  return {
+    type: USER_UPDATE_PASSWORD
   };
 };
 

@@ -68,9 +68,7 @@ const ResetPassword = props => {
         {resetPasswordToken !== undefined &&
           resetPasswordExpiration <= currentDate && (
             <p>
-              <span>
-                Your reset password link has expired; please requeset a{" "}
-              </span>
+              <span>Your reset password link has expired; requeset a </span>
               <a href="/resetPassword">
                 <b>new email</b>
               </a>
@@ -87,7 +85,7 @@ const ResetPassword = props => {
             <p>
               <span>
                 This reset password link has already been used or is invalid;
-                please requeset a{" "}
+                requeset a{" "}
               </span>
               <a href="/resetPassword">
                 <b>new email</b>
