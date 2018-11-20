@@ -117,3 +117,18 @@ body {
 .notfound {
   font-size: 8em;
 }
+
+/* Tic-Tac-Toe */
+.square {
+  width: 100px;
+  height: 100px;
+  font-size: 3em;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  margin-right: -1px;
+  margin-top: -1px;
+}
+
+.square:focus {
+  outline: none;
+}

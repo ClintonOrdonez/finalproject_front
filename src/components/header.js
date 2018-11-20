@@ -73,6 +73,17 @@ class Header extends Component {
                 </Button>
               )}
               {this.props.token !== null && (
+                <Button>
+                  <NavLink
+                    activeClassName="active"
+                    className="nav-link"
+                    to="/ticTacToe"
+                  >
+                    Tic-Tac-Toe
+                  </NavLink>
+                </Button>
+              )}
+              {this.props.token !== null && (
                 <ButtonDropdown
                   isOpen={this.state.dropdownOpen}
                   toggle={this.toggle}

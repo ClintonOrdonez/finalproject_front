@@ -10,6 +10,7 @@ import {
   Login,
   Logout,
   Signup,
+  TicTacToe,
   Theme,
   UpdateEmail,
   UpdatePassword,
@@ -34,6 +35,7 @@ const App = props => (
           <main className="inner cover mainSection">
             <Switch>
               <Route exact path="/" component={Home} />
+              <ProtectedRoute path="/ticTacToe" component={TicTacToe} />
               <ProtectedRoute path="/theme" component={Theme} />
               <ProtectedRoute path="/updateEmail" component={UpdateEmail} />
               <ProtectedRoute

@@ -5,6 +5,7 @@ import Header from "./header";
 import Login from "./login";
 import Logout from "./logout";
 import Signup from "./signup";
+import TicTacToe from "./ticTacToe";
 import Theme from "./theme";
 import UpdateEmail from "./updateEmail";
 import UpdatePassword from "./updatePassword";
@@ -19,6 +20,7 @@ export {
   Login,
   Logout,
   Signup,
+  TicTacToe,
   Theme,
   UpdateEmail,
   UpdatePassword,
