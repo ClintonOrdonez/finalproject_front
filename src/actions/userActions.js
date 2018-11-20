@@ -1,6 +1,7 @@
 import {
   USER_LOGIN,
   USER_LOGOUT,
+  USER_UPDATE_THEME,
   USER_UPDATE_PASSWORD,
   USER_RESET_PASSWORD
 } from "./types";
@@ -85,6 +86,29 @@ export const UserCheckPassword = (email, password) => {
       .catch(error => {
         throw error;
       });
+  };
+};
+
+export const UserUpdateTheme = (email, theme) => {
+  return dispatch => {
+    return axios
+      .put(userURL + "/updateTheme", {
+        email: email,
+        theme: theme
+      })
+      .then(response => {
+        dispatch(UserUpdateThemeSuccess(response.data.theme));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};
+
+export const UserUpdateThemeSuccess = theme => {
+  return {
+    type: USER_UPDATE_THEME,
+    theme: theme
   };
 };
 
