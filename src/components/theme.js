@@ -55,21 +55,21 @@ class Theme extends Component {
             onClick={() => {
               this.onRadioBtnClick(theme1);
               this.props.onUpdateTheme(email, theme1);
-              document.documentElement.style.setProperty("--color1", "#000");
-              document.documentElement.style.setProperty("--color2", "#eee");
-              document.documentElement.style.setProperty("--color3", "#ccc");
-              document.documentElement.style.setProperty(
-                "--color4",
-                "rgba(255, 255, 255, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color5",
-                "rgba(0, 0, 0, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgba(0, 0, 0, 0.25)"
-              );
+              // document.documentElement.style.setProperty("--color1", "#000");
+              // document.documentElement.style.setProperty("--color2", "#eee");
+              // document.documentElement.style.setProperty("--color3", "#ccc");
+              // document.documentElement.style.setProperty(
+              //   "--color4",
+              //   "rgba(255, 255, 255, 0.5)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color5",
+              //   "rgba(0, 0, 0, 0.5)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color6",
+              //   "rgba(0, 0, 0, 0.25)"
+              // );
             }}
             active={this.state.rSelected === theme1}
           >
@@ -80,21 +80,21 @@ class Theme extends Component {
             onClick={() => {
               this.onRadioBtnClick(theme2);
               this.props.onUpdateTheme(email, theme2);
-              document.documentElement.style.setProperty("--color1", "#fff");
-              document.documentElement.style.setProperty("--color2", "#111");
-              document.documentElement.style.setProperty("--color3", "#333");
-              document.documentElement.style.setProperty(
-                "--color4",
-                "rgba(0, 0, 0, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color5",
-                "rgba(255, 255, 255, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgba(255, 255, 255, 0.25)"
-              );
+              // document.documentElement.style.setProperty("--color1", "#fff");
+              // document.documentElement.style.setProperty("--color2", "#111");
+              // document.documentElement.style.setProperty("--color3", "#333");
+              // document.documentElement.style.setProperty(
+              //   "--color4",
+              //   "rgba(0, 0, 0, 0.5)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color5",
+              //   "rgba(255, 255, 255, 0.5)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color6",
+              //   "rgba(255, 255, 255, 0.25)"
+              // );
             }}
             active={this.state.rSelected === theme2}
           >
@@ -105,27 +105,27 @@ class Theme extends Component {
             onClick={() => {
               this.onRadioBtnClick(theme3);
               this.props.onUpdateTheme(email, theme3);
-              document.documentElement.style.setProperty("--color1", "#fff");
-              document.documentElement.style.setProperty(
-                "--color2",
-                "rgb(249, 251, 253)"
-              );
-              document.documentElement.style.setProperty(
-                "--color3",
-                "rgb(53, 0, 50)"
-              );
-              document.documentElement.style.setProperty(
-                "--color4",
-                "0.05rem solid rgb(255, 255, 255)"
-              );
-              document.documentElement.style.setProperty(
-                "--color5",
-                "90deg, rgb(0, 0, 0)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgb(53, 0, 50) 15%,"
-              );
+              // document.documentElement.style.setProperty("--color1", "#fff");
+              // document.documentElement.style.setProperty(
+              //   "--color2",
+              //   "rgb(249, 251, 253)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color3",
+              //   "rgb(53, 0, 50)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color4",
+              //   "0.05rem solid rgb(255, 255, 255)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color5",
+              //   "90deg, rgb(0, 0, 0)"
+              // );
+              // document.documentElement.style.setProperty(
+              //   "--color6",
+              //   "rgb(53, 0, 50) 15%,"
+              // );
             }}
             active={this.state.rSelected === theme3}
           >
@@ -135,12 +135,12 @@ class Theme extends Component {
             onClick={() => {
               this.onRadioBtnClick(theme4);
               this.props.onUpdateTheme(email, theme4);
-              document.documentElement.style.setProperty("--color1", "yellow");
-              document.documentElement.style.setProperty("--color2", "blue");
-              document.documentElement.style.setProperty("--color3", "blue");
-              document.documentElement.style.setProperty("--color4", "blue");
-              document.documentElement.style.setProperty("--color5", "blue");
-              document.documentElement.style.setProperty("--color6", "blue");
+              // document.documentElement.style.setProperty("--color1", "yellow");
+              // document.documentElement.style.setProperty("--color2", "red");
+              // document.documentElement.style.setProperty("--color3", "orange");
+              // document.documentElement.style.setProperty("--color4", "green");
+              // document.documentElement.style.setProperty("--color5", "purple");
+              // document.documentElement.style.setProperty("--color6", "blue");
             }}
             active={this.state.rSelected === theme4}
           >

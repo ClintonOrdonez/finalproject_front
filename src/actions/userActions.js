@@ -35,6 +35,7 @@ export const UserLogin = (email, password) => {
             response.data.theme
           )
         );
+        dispatch(UserApplyTheme(response.data.theme));
       })
       .catch(error => {
         throw error;
@@ -52,6 +53,13 @@ export const UserLoginSuccess = (email, token, theme) => {
 };
 
 export const UserLogout = () => {
+  return dispatch => {
+    dispatch(UserLogoutSuccess());
+    dispatch(UserApplyTheme());
+  };
+};
+
+export const UserLogoutSuccess = () => {
   return {
     type: USER_LOGOUT
   };
@@ -98,6 +106,7 @@ export const UserUpdateTheme = (email, theme) => {
       })
       .then(response => {
         dispatch(UserUpdateThemeSuccess(response.data.theme));
+        dispatch(UserApplyTheme(response.data.theme));
       })
       .catch(error => {
         throw error;
@@ -110,6 +119,98 @@ export const UserUpdateThemeSuccess = theme => {
     type: USER_UPDATE_THEME,
     theme: theme
   };
+};
+
+export const UserApplyTheme = theme => {
+  switch (theme) {
+    case 1:
+      return dispatch => {
+        document.documentElement.style.setProperty("--color1", "#000");
+        document.documentElement.style.setProperty("--color2", "#eee");
+        document.documentElement.style.setProperty("--color3", "#ccc");
+        document.documentElement.style.setProperty(
+          "--color4",
+          "rgba(255, 255, 255, 0.5)"
+        );
+        document.documentElement.style.setProperty(
+          "--color5",
+          "rgba(0, 0, 0, 0.5)"
+        );
+        document.documentElement.style.setProperty(
+          "--color6",
+          "rgba(0, 0, 0, 0.25)"
+        );
+      };
+    case 2:
+      return dispatch => {
+        document.documentElement.style.setProperty("--color1", "#fff");
+        document.documentElement.style.setProperty("--color2", "#111");
+        document.documentElement.style.setProperty("--color3", "#333");
+        document.documentElement.style.setProperty(
+          "--color4",
+          "rgba(0, 0, 0, 0.5)"
+        );
+        document.documentElement.style.setProperty(
+          "--color5",
+          "rgba(255, 255, 255, 0.5)"
+        );
+        document.documentElement.style.setProperty(
+          "--color6",
+          "rgba(255, 255, 255, 0.25)"
+        );
+      };
+    case 3:
+      return dipsatch => {
+        document.documentElement.style.setProperty("--color1", "#fff");
+        document.documentElement.style.setProperty(
+          "--color2",
+          "rgb(249, 251, 253)"
+        );
+        document.documentElement.style.setProperty(
+          "--color3",
+          "rgb(53, 0, 50)"
+        );
+        document.documentElement.style.setProperty(
+          "--color4",
+          "0.05rem solid rgb(255, 255, 255)"
+        );
+        document.documentElement.style.setProperty(
+          "--color5",
+          "90deg, rgb(0, 0, 0)"
+        );
+        document.documentElement.style.setProperty(
+          "--color6",
+          "rgb(53, 0, 50) 15%,"
+        );
+      };
+    case 4:
+      return dispatch => {
+        document.documentElement.style.setProperty("--color1", "yellow");
+        document.documentElement.style.setProperty("--color2", "red");
+        document.documentElement.style.setProperty("--color3", "orange");
+        document.documentElement.style.setProperty("--color4", "green");
+        document.documentElement.style.setProperty("--color5", "purple");
+        document.documentElement.style.setProperty("--color6", "blue");
+      };
+    default:
+      return dispatch => {
+        document.documentElement.style.setProperty("--color1", "#000");
+        document.documentElement.style.setProperty("--color2", "#eee");
+        document.documentElement.style.setProperty("--color3", "#ccc");
+        document.documentElement.style.setProperty(
+          "--color4",
+          "rgba(255, 255, 255, 0.5)"
+        );
+        document.documentElement.style.setProperty(
+          "--color5",
+          "rgba(0, 0, 0, 0.5)"
+        );
+        document.documentElement.style.setProperty(
+          "--color6",
+          "rgba(0, 0, 0, 0.25)"
+        );
+      };
+  }
 };
 
 // Searches database by email property using currentEmail
@@ -139,7 +240,6 @@ export const UserUpdatePassword = (email, password) => {
     return axios
       .put(userURL + "/updatePassword", { email: email, password: password })
       .then(response => {
-        // console.log(response);
         dispatch(UserLogin(response.data.email, password));
         dispatch(UserUpdatePasswordSuccess());
       })
