@@ -59,6 +59,7 @@ class DeleteAccount extends Component {
             instantaneous, and cannot be canceled once submitted.
           </p>
           <Button
+            className="warning"
             outline
             color="warning"
             onClick={() => {
@@ -136,18 +137,19 @@ class DeleteAccount extends Component {
           <div className="form-group">
             <Button
               id="delete"
+              className="danger"
               outline
               color="danger"
               onMouseOver={() => {
-                console.log("email: " + validEmail);
-                console.log("password: " + validPassword);
-                console.log("checked: " + this.state.checked);
+                // console.log("email: " + validEmail);
+                // console.log("password: " + validPassword);
+                // console.log("checked: " + this.state.cSelected.includes(1));
               }}
               onClick={() => {
                 if (
                   validEmail === true &&
                   validPassword === true &&
-                  this.state.cSelected.includes(1)
+                  this.state.cSelected.includes(1) === true
                 ) {
                   alert("User account has been successfully deleted.");
                   this.props.onDeleteAccount(accountEmail);
