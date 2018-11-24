@@ -28,10 +28,10 @@ const mapDispatchToProps = dispatch => {
 const ResetPassword = props => {
   let URL = window.location.href;
 
-  let removeLink = URL.split("http://localhost:3000/resetPassword/");
-  // let removeLink = URL.split(
-  //   "https://team-gestalt-app.herokuapp.com/resetPassword/"
-  // );
+  // let removeLink = URL.split("http://localhost:3000/resetPassword/");
+  let removeLink = URL.split(
+    "https://team-gestalt-app.herokuapp.com/resetPassword/"
+  );
 
   let resetPasswordToken = removeLink[1];
   let resetPasswordExpiration = Date.parse(props.resetPasswordExpiration);
