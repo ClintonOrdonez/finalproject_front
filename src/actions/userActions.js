@@ -190,44 +190,38 @@ export const UserApplyTheme = theme => {
       };
     case 3:
       return dispatch => {
-        document.documentElement.style.setProperty("--color1", "#fff");
-        document.documentElement.style.setProperty(
-          "--color2",
-          "rgb(249, 251, 253)"
-        );
-        document.documentElement.style.setProperty(
-          "--color3",
-          "rgb(53, 0, 50)"
-        );
+        document.documentElement.style.setProperty("--color1", "#4B0082");
+        document.documentElement.style.setProperty("--color2", "#D8BFD8");
+        document.documentElement.style.setProperty("--color3", "#EE82EE");
         document.documentElement.style.setProperty(
           "--color4",
-          "0.05rem solid rgb(255, 255, 255)"
+          "rgba(230, 230, 250, 0.5)"
         );
         document.documentElement.style.setProperty(
           "--color5",
-          "90deg, rgb(0, 0, 0)"
+          "rgba(75, 0, 130, 0.5)"
         );
         document.documentElement.style.setProperty(
           "--color6",
-          "rgb(53, 0, 50) 15%,"
+          "rgba(75, 0, 130, 0.25)"
         );
       };
     case 4:
       return dispatch => {
-        document.documentElement.style.setProperty("--color1", "red");
-        document.documentElement.style.setProperty("--color2", "green");
-        document.documentElement.style.setProperty("--color3", "blue");
+        document.documentElement.style.setProperty("--color1", "#F0F8FF");
+        document.documentElement.style.setProperty("--color2", "#0000CD");
+        document.documentElement.style.setProperty("--color3", "#6A5ACD");
         document.documentElement.style.setProperty(
           "--color4",
-          "rgba(255, 255, 0, 0.5)"
+          "rgba(25, 25, 112, 0.5)"
         );
         document.documentElement.style.setProperty(
           "--color5",
-          "rgba(0, 255, 255, 0.5)"
+          "rgba(240, 248, 255, 0.5)"
         );
         document.documentElement.style.setProperty(
           "--color6",
-          "rgba(255, 0, 255, 0.25)"
+          "rgba(240, 248, 255, 0.25)"
         );
       };
     default:

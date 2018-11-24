@@ -70,7 +70,7 @@ class Theme extends Component {
           >
             Dark
           </Button>
-          {/* {Extra Theme} */}
+          {/* {Bubble Gum Theme} */}
           <Button
             onClick={() => {
               this.onRadioBtnClick(theme3);
@@ -78,8 +78,9 @@ class Theme extends Component {
             }}
             active={this.state.rSelected === theme3}
           >
-            Theme 3
+            Bubble Gum
           </Button>
+          {/* {Cobalt Theme} */}
           <Button
             onClick={() => {
               this.onRadioBtnClick(theme4);
@@ -87,7 +88,7 @@ class Theme extends Component {
             }}
             active={this.state.rSelected === theme4}
           >
-            Theme 4
+            Cobalt
           </Button>
         </ButtonGroup>
       </div>
