@@ -36,7 +36,7 @@ class Header extends Component {
     return (
       <header className="masthead">
         <div className="inner">
-          <h3 className="masthead-brand">Header</h3>
+          <h3 className="masthead-brand">Team Gestalt</h3>
 
           <nav className="nav nav-masthead justify-content-center">
             <ButtonGroup size="sm">
