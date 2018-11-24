@@ -136,13 +136,6 @@ body {
 .notfound {
   font-size: 8em;
 }
-<<<<<<< HEAD
-=======
-.form-control {
-  border: 1px solid var(--color1);
-}
-
->>>>>>> 2f4d9bddac1288214655fd5f08ab0ef193599f73
 /* Tic-Tac-Toe */
 .jumbotron {
   background-color: var(--color6);
