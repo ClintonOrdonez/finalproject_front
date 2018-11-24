@@ -24,7 +24,26 @@ a:hover {
   color: var(--color3);
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: var(--color5);
-  border: 0.05rem solid var(--color1);
+  border: 1px solid var(--color1);
+}
+.warning,
+.warning:hover,
+.warning:focus,
+.warning:active,
+.warning:active:hover,
+.warning:active:focus {
+  border: 1px solid var(--color1);
+}
+.danger,
+.danger:hover,
+.danger:focus {
+  border: 1px solid var(--color1);
+}
+.dropdown-menu {
+  color: var(--color3);
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: var(--color2);
+  border: 1px solid var(--color1);
 }
 /*
  * Base structure
@@ -111,21 +130,37 @@ body {
   max-width: 40em;
 }
 .badge-primary {
-  color: white;
-  background-color: #000000;
+  color: var(--color2);
+  background-color: var(--color1);
 }
 .notfound {
   font-size: 8em;
 }
+<<<<<<< HEAD
+=======
+.form-control {
+  border: 1px solid var(--color1);
+}
+
+>>>>>>> 2f4d9bddac1288214655fd5f08ab0ef193599f73
 /* Tic-Tac-Toe */
+.jumbotron {
+  background-color: var(--color6);
+  border: 1px solid var(--color1);
+}
+
 .square {
   width: 100px;
   height: 100px;
+  color: var(--color1);
   font-size: 3em;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  margin-right: -1px;
-  margin-top: -1px;
+  background-color: var(--color2);
+  border: 1px solid var(--color1);
+  border-radius: 10px;
+  margin-right: 1px;
+  margin-top: 1px;
+  margin-left: 1px;
+  margin-bottom: 1px;
 }
 .square:focus {
   outline: none;
