@@ -75,7 +75,6 @@ export const UserCheckEmail = email => {
     return axios
       .post(userURL + "/checkEmail", { email: email })
       .then(response => {
-        // console.log(response);
         return response;
       })
       .catch(error => {
@@ -91,7 +90,6 @@ export const UserCheckPassword = (email, password) => {
     return axios
       .post(userURL + "/checkPassword", { email: email, password: password })
       .then(response => {
-        // console.log(response);
         return response;
       })
       .catch(error => {
@@ -255,7 +253,6 @@ export const UserUpdateEmail = (currentEmail, newEmail, password) => {
         newEmail: newEmail
       })
       .then(response => {
-        // console.log(response);
         dispatch(UserLogin(response.data.email, password));
       })
       .catch(error => {
@@ -267,7 +264,6 @@ export const UserUpdateEmail = (currentEmail, newEmail, password) => {
 // Searches database by email property
 // Updates password property with encrypted tempUser.password
 export const UserUpdatePassword = (email, password) => {
-  // console.log(email, password);
   return dispatch => {
     return axios
       .put(userURL + "/updatePassword", { email: email, password: password })
@@ -276,7 +272,7 @@ export const UserUpdatePassword = (email, password) => {
         dispatch(UserUpdatePasswordSuccess());
       })
       .catch(error => {
-        console.log(error);
+        throw error;
       });
   };
 };
@@ -290,18 +286,16 @@ export const UserUpdatePasswordSuccess = () => {
 // Searches database by email property
 // Deletes found record from database
 export const UserDeleteAccount = email => {
-  // console.log("action email: " + email);
   return dispatch => {
     return axios
       .delete(userURL + "/deleteAccount", {
         data: { email: email }
       })
       .then(response => {
-        // console.log("response email: " + response.data.email);
         dispatch(UserLogout());
       })
       .catch(error => {
-        console.log(error);
+        throw error;
       });
   };
 };
@@ -314,7 +308,7 @@ export const UserResetPassword = email => {
       .put(userURL + "/resetPassword", { email: email })
       .then(response => {})
       .catch(error => {
-        console.log(error);
+        throw error;
       });
   };
 };

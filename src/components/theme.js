@@ -30,7 +30,6 @@ class Theme extends Component {
   }
 
   render() {
-    console.log(this.props.theme);
     let email = this.props.email;
     const theme1 = 1;
     const theme2 = 2;
@@ -80,7 +79,7 @@ class Theme extends Component {
           >
             Bubble Gum
           </Button>
-          {/* {Cobalt Theme} */}
+          {/* {Cobalt Steel Theme} */}
           <Button
             onClick={() => {
               this.onRadioBtnClick(theme4);
@@ -88,7 +87,7 @@ class Theme extends Component {
             }}
             active={this.state.rSelected === theme4}
           >
-            Cobalt
+            Cobalt Steel
           </Button>
         </ButtonGroup>
       </div>

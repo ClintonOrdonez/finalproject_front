@@ -51,8 +51,6 @@ const checkWinner = squares => {
     winner = "Draw";
   }
 
-  // console.log(winner);
-
   return winner;
 };
 
@@ -67,7 +65,6 @@ class TicTacToe extends Component {
   }
 
   handleClick = squareNum => {
-    console.log(squareNum);
     let currentSquares = this.state.squares;
     if (currentSquares[squareNum] || checkWinner(currentSquares)) {
       return;

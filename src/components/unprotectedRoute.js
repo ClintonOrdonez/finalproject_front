@@ -9,7 +9,6 @@ const mapStateToProps = state => {
 };
 
 const UnprotectedRoute = ({ component: Component, authenticated, ...rest }) => {
-  // console.log(authenticated);
   return (
     <Route
       {...rest}

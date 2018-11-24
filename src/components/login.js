@@ -47,10 +47,8 @@ const Login = props => {
               props.onCheckEmail(email).then(result => {
                 if (result.data.count === 1) {
                   validEmail = true;
-                  // console.log("email: " + validEmail);
                 } else {
                   validEmail = false;
-                  // console.log("email: " + validEmail);
                   validPassword = false;
                   document.getElementById("password").value = "";
                 }
@@ -82,7 +80,6 @@ const Login = props => {
                 }
               });
             }
-            // console.log("password: " + validPassword);
           }}
         />
       </div>

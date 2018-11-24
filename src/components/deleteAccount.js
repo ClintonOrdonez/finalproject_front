@@ -64,7 +64,6 @@ class DeleteAccount extends Component {
             color="warning"
             onClick={() => {
               this.onCheckboxBtnClick(1);
-              console.log(this.state.cSelected);
             }}
             active={this.state.cSelected.includes(1)}
           >
@@ -140,11 +139,11 @@ class DeleteAccount extends Component {
               className="btn-danger"
               outline
               color="danger"
-              onMouseOver={() => {
-                console.log("email: " + validEmail);
-                console.log("password: " + validPassword);
-                console.log("checked: " + this.state.checked);
-              }}
+              // onMouseOver={() => {
+              //   console.log("email: " + validEmail);
+              //   console.log("password: " + validPassword);
+              //   console.log("checked: " + this.state.checked);
+              // }}
               onClick={() => {
                 if (
                   validEmail === true &&

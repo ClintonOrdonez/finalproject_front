@@ -27,15 +27,16 @@ const mapDispatchToProps = dispatch => {
 
 const ResetPassword = props => {
   let URL = window.location.href;
-  // console.log(URL);
+
   let removeLink = URL.split("http://localhost:3000/resetPassword/");
   // let removeLink = URL.split(
   //   "https://team-gestalt-app.herokuapp.com/resetPassword/"
   // );
+
   let resetPasswordToken = removeLink[1];
   let resetPasswordExpiration = Date.parse(props.resetPasswordExpiration);
   let currentDate = Date.parse(new Date());
-  // console.log(resetPasswordToken);
+
   // "Email" input variables
   let emailRaw;
   let email;
@@ -43,9 +44,11 @@ const ResetPassword = props => {
   // eslint-disable-next-line
   let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let validEmail = false;
+
   // "New Password" input variables
   let newPassword;
   let validNewPassword = false;
+
   // "Confirm New Password" input variables
   let confirmNewPassword;
   let matchNewPassword = false;
