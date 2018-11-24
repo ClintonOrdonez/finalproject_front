@@ -53,116 +53,41 @@ class Theme extends Component {
           {/* {Light Theme} */}
           <Button
             onClick={() => {
-              // this.onRadioBtnClick(theme1);
-              // this.props.onUpdateTheme(email, theme1);
-              document.documentElement.style.setProperty("--color1", "#000");
-              document.documentElement.style.setProperty("--color2", "#eee");
-              document.documentElement.style.setProperty("--color3", "#ccc");
-              document.documentElement.style.setProperty(
-                "--color4",
-                "rgba(255, 255, 255, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color5",
-                "rgba(0, 0, 0, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgba(0, 0, 0, 0.25)"
-              );
+              this.onRadioBtnClick(theme1);
+              this.props.onUpdateTheme(email, theme1);
             }}
             active={this.state.rSelected === theme1}
           >
-            Light Theme
+            Light
           </Button>
           {/* {Dark Theme} */}
           <Button
             onClick={() => {
-              // this.onRadioBtnClick(theme2);
-              // this.props.onUpdateTheme(email, theme2);
-              document.documentElement.style.setProperty(
-                "--color1",
-                "rgb(255, 255, 255)"
-              );
-              document.documentElement.style.setProperty(
-                "--color2",
-                "rgb(0, 0, 255)"
-              );
-              document.documentElement.style.setProperty(
-                "--color3",
-                "rgb(255, 0, 0)"
-              );
-              document.documentElement.style.setProperty("--color4", "teal");
-              document.documentElement.style.setProperty(
-                "--color5",
-                "rgba(0, 0, 0, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgba(255, 255, 255)"
-              );
+              this.onRadioBtnClick(theme2);
+              this.props.onUpdateTheme(email, theme2);
             }}
             active={this.state.rSelected === theme2}
           >
-            Superman Theme
+            Dark
           </Button>
           {/* {Extra Theme} */}
           <Button
             onClick={() => {
-              // this.onRadioBtnClick(theme3);
-              // this.props.onUpdateTheme(email, theme3);
-              document.documentElement.style.setProperty(
-                "--color1",
-                "rgb(255, 255, 255)"
-              );
-              document.documentElement.style.setProperty(
-                "--color2",
-                "rgb(0, 255, 255)"
-              );
-              document.documentElement.style.setProperty(
-                "--color3",
-                "rgb(255, 0, 191)"
-              );
-              document.documentElement.style.setProperty("--color4", "black");
-              document.documentElement.style.setProperty(
-                "--color5",
-                "rgba(0, 0, 0, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgba(0, 0, 0, 0.25)"
-              );
+              this.onRadioBtnClick(theme3);
+              this.props.onUpdateTheme(email, theme3);
             }}
             active={this.state.rSelected === theme3}
           >
-            Unicorn Theme
+            Theme 3
           </Button>
           <Button
             onClick={() => {
-              // this.onRadioBtnClick(theme4);
-              // this.props.onUpdateTheme(email, theme4);
-              document.documentElement.style.setProperty("--color1", "white");
-              document.documentElement.style.setProperty(
-                "--color2",
-                "rgb(255,0,0)"
-              );
-              document.documentElement.style.setProperty(
-                "--color3",
-                "rgb(0,0,0)"
-              );
-              document.documentElement.style.setProperty("--color4", "red");
-              document.documentElement.style.setProperty(
-                "--color5",
-                "rgba(255, 0, 0, 0.5)"
-              );
-              document.documentElement.style.setProperty(
-                "--color6",
-                "rgba(255, 0, 0, 0.25)"
-              );
+              this.onRadioBtnClick(theme4);
+              this.props.onUpdateTheme(email, theme4);
             }}
             active={this.state.rSelected === theme4}
           >
-            Diablo Theme
+            Theme 4
           </Button>
         </ButtonGroup>
       </div>
