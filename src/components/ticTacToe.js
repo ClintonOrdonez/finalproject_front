@@ -72,7 +72,7 @@ class TicTacToe extends Component {
     if (currentSquares[squareNum] || checkWinner(currentSquares)) {
       return;
     }
-    currentSquares[squareNum] = this.state.xIsNext ? " X " : " O ";
+    currentSquares[squareNum] = this.state.xIsNext ? "X" : "O";
     this.setState({
       square: currentSquares,
       xIsNext: !this.state.xIsNext
