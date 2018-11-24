@@ -23,8 +23,7 @@ const Square = props => (
   </button>
 );
 
-const checkWinner = (squares, props) => {
-  console.log(props);
+const checkWinner = squares => {
   let lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -36,11 +35,6 @@ const checkWinner = (squares, props) => {
     [2, 4, 6]
   ];
   let winner = null;
-  // let email = props.email;
-  // let games = props.games;
-  // let xWins = props.xWins;
-  // let oWins = props.oWins;
-  // let draws = props.draws;
 
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
@@ -57,21 +51,7 @@ const checkWinner = (squares, props) => {
     winner = "Draw";
   }
 
-  // if (winner === "X") {
-  //   games++;
-  //   xWins++;
-  //   props.onUpdateTicTacToeStats(email, games, xWins, oWins, draws);
-  // }
-  // if (winner === "O") {
-  //   games++;
-  //   oWins++;
-  //   props.onUpdateTicTacToeStats(email, games, xWins, oWins, draws);
-  // }
-  // if (winner === "Draw") {
-  //   games++;
-  //   draws++;
-  //   props.onUpdateTicTacToeStats(email, games, xWins, oWins, draws);
-  // }
+  // console.log(winner);
 
   return winner;
 };
@@ -82,14 +62,14 @@ class TicTacToe extends Component {
     this.state = {
       xIsNext: true,
       squares: Array(9).fill(null),
-      update: false
+      updateStats: false
     };
   }
 
   handleClick = squareNum => {
     // console.log(squareNum);
     let currentSquares = this.state.squares;
-    if (currentSquares[squareNum] || checkWinner(currentSquares, this.props)) {
+    if (currentSquares[squareNum] || checkWinner(currentSquares)) {
       return;
     }
     currentSquares[squareNum] = this.state.xIsNext ? "X" : "O";
@@ -97,6 +77,35 @@ class TicTacToe extends Component {
       square: currentSquares,
       xIsNext: !this.state.xIsNext
     });
+  };
+
+  handleUpdateStats = () => {
+    this.setState({
+      updateStats: true
+    });
+  };
+
+  updateStats = (winner, email, games, xWins, oWins, draws) => {
+    if (this.state.updateStats === false) {
+      if (winner === "X") {
+        games++;
+        xWins++;
+        this.props.onUpdateTicTacToeStats(email, games, xWins, oWins, draws);
+        this.handleUpdateStats();
+      }
+      if (winner === "O") {
+        games++;
+        oWins++;
+        this.props.onUpdateTicTacToeStats(email, games, xWins, oWins, draws);
+        this.handleUpdateStats();
+      }
+      if (winner === "Draw") {
+        games++;
+        draws++;
+        this.props.onUpdateTicTacToeStats(email, games, xWins, oWins, draws);
+        this.handleUpdateStats();
+      }
+    }
   };
 
   renderSquare = squareNum => (
@@ -107,42 +116,54 @@ class TicTacToe extends Component {
   );
 
   render() {
-    let winner = checkWinner(this.state.squares, this.props);
+    let winner = checkWinner(this.state.squares);
     let email = this.props.email;
     let games = this.props.ticTacToeStats.games;
     let xWins = this.props.ticTacToeStats.xWins;
     let oWins = this.props.ticTacToeStats.oWins;
     let draws = this.props.ticTacToeStats.draws;
 
+    this.updateStats(winner, email, games, xWins, oWins, draws);
+
     return (
       <div>
         <div className="jumbotron">
           <div className="form-group">
             <h1>Tic-Tac-Toe</h1>
-            <h3>Turn: {this.state.xIsNext ? "X" : "O"}</h3>
-            <h3>Winner: {winner}</h3>
+            {this.state.updateStats === false && (
+              <h3>Turn: {this.state.xIsNext ? "X" : "O"}</h3>
+            )}
+            {this.state.updateStats === true && <h3>Game Over!</h3>}
+            <h5>Winner:</h5>
+            <h2>&nbsp;{winner}&nbsp;</h2>
           </div>
+
           <br />
-          <div className="form-group">
-            <div className="row">
-              {this.renderSquare(0)}
-              {this.renderSquare(1)}
-              {this.renderSquare(2)}
-            </div>
-            <div className="row">
-              {this.renderSquare(3)}
-              {this.renderSquare(4)}
-              {this.renderSquare(5)}
-            </div>
-            <div className="row">
-              {this.renderSquare(6)}
-              {this.renderSquare(7)}
-              {this.renderSquare(8)}
+
+          <div className="flex-container">
+            <div className="form-group">
+              <div className="row">
+                {this.renderSquare(0)}
+                {this.renderSquare(1)}
+                {this.renderSquare(2)}
+              </div>
+              <div className="row">
+                {this.renderSquare(3)}
+                {this.renderSquare(4)}
+                {this.renderSquare(5)}
+              </div>
+              <div className="row">
+                {this.renderSquare(6)}
+                {this.renderSquare(7)}
+                {this.renderSquare(8)}
+              </div>
             </div>
           </div>
+
           <br />
+
           <div className="form-group">
-            <h3>Stats for {email}:</h3>
+            <h4>Stats for {email}:</h4>
             <span>[ Games: {games} ]</span>&nbsp;
             <span>[ X Wins: {xWins} ]</span>&nbsp;
             <span>[ O Wins: {oWins} ]</span>&nbsp;
@@ -152,52 +173,21 @@ class TicTacToe extends Component {
             <ButtonGroup>
               <Button
                 onClick={() => {
-                  if (winner === "X") {
-                    games++;
-                    xWins++;
-                    this.props.onUpdateTicTacToeStats(
-                      email,
-                      games,
-                      xWins,
-                      oWins,
-                      draws
-                    );
-                  }
-                  if (winner === "O") {
-                    games++;
-                    oWins++;
-                    this.props.onUpdateTicTacToeStats(
-                      email,
-                      games,
-                      xWins,
-                      oWins,
-                      draws
-                    );
-                  }
-                  if (winner === "Draw") {
-                    games++;
-                    draws++;
-                    this.props.onUpdateTicTacToeStats(
-                      email,
-                      games,
-                      xWins,
-                      oWins,
-                      draws
-                    );
-                  }
-                }}
-              >
-                Recalculate Stats
-              </Button>
-              <Button
-                onClick={() => {
                   this.setState({
                     xIsNext: true,
-                    squares: Array(9).fill(null)
+                    squares: Array(9).fill(null),
+                    updateStats: false
                   });
                 }}
               >
                 Reset Board
+              </Button>
+              <Button
+                onClick={() => {
+                  this.props.onUpdateTicTacToeStats(email, 0, 0, 0, 0);
+                }}
+              >
+                Erase Stats
               </Button>
             </ButtonGroup>
           </div>

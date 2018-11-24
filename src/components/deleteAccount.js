@@ -59,7 +59,7 @@ class DeleteAccount extends Component {
             instantaneous, and cannot be canceled once submitted.
           </p>
           <Button
-            className="warning"
+            className="btn-warning"
             outline
             color="warning"
             onClick={() => {
@@ -137,7 +137,7 @@ class DeleteAccount extends Component {
           <div className="form-group">
             <Button
               id="delete"
-              className="danger"
+              className="btn-danger"
               outline
               color="danger"
               onMouseOver={() => {

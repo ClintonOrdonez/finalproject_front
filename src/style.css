@@ -11,40 +11,48 @@
 /*
  * Globals
  */
+
 /* Links */
 a,
 a:focus,
 a:hover {
   color: var(--color1);
 }
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: var(--color3);
+
+/* Buttons */
+.btn-secondary {
+  color: var(--color3) !important;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: var(--color5);
-  border: 1px solid var(--color1);
+  border: 1px solid var(--color1) !important;
 }
-.warning,
-.warning:hover,
-.warning:focus,
-.warning:active,
-.warning:active:hover,
-.warning:active:focus {
-  border: 1px solid var(--color1);
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--color6);
 }
-.danger,
-.danger:hover,
-.danger:focus {
-  border: 1px solid var(--color1);
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled):hover,
+.btn-secondary:not(:disabled):not(.disabled):focus {
+  background-color: var(--color6);
 }
+.btn-warning {
+  border: 1px solid var(--color1) !important;
+}
+.btn-danger {
+  border: 1px solid var(--color1) !important;
+}
+
+/* Dropdown Menu */
 .dropdown-menu {
   color: var(--color3);
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: var(--color2);
   border: 1px solid var(--color1);
 }
+.dropdown-item:hover {
+  background-color: var(--color2);
+}
+
 /*
  * Base structure
  */
@@ -74,6 +82,7 @@ body {
 .cover-container {
   max-width: 42em;
 }
+
 /*
  * Header
  */
@@ -109,6 +118,7 @@ body {
     float: right;
   }
 }
+
 /*
  * Cover
  */
@@ -119,6 +129,7 @@ body {
   padding: 0.75rem 1.25rem;
   font-weight: 700;
 }
+
 /*
  * Footer
  */
@@ -162,4 +173,9 @@ body {
 
 .square:focus {
   outline: none;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
 }
