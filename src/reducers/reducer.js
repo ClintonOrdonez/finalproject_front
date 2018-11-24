@@ -1,7 +1,6 @@
 import {
   USER_LOGIN,
   USER_LOGOUT,
-  USER_UPDATE_TICTACTOE_STATS,
   USER_UPDATE_THEME,
   USER_UPDATE_PASSWORD,
   USER_RESET_PASSWORD
@@ -10,7 +9,6 @@ import {
 const initialState = {
   email: null,
   token: null,
-  ticTacToeStats: null,
   theme: 1,
   resetPasswordExpiration: null
 };
@@ -22,7 +20,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         email: action.email,
         token: action.token,
-        ticTacToeStats: action.ticTacToeStats,
         theme: action.theme
       };
     case USER_LOGOUT:
@@ -31,11 +28,6 @@ export const reducer = (state = initialState, action) => {
         email: null,
         token: null,
         theme: 1
-      };
-    case USER_UPDATE_TICTACTOE_STATS:
-      return {
-        ...state,
-        ticTacToeStats: action.ticTacToeStats
       };
     case USER_UPDATE_THEME:
       return {

@@ -141,15 +141,15 @@ class DeleteAccount extends Component {
               outline
               color="danger"
               onMouseOver={() => {
-                // console.log("email: " + validEmail);
-                // console.log("password: " + validPassword);
-                // console.log("checked: " + this.state.cSelected.includes(1));
+                console.log("email: " + validEmail);
+                console.log("password: " + validPassword);
+                console.log("checked: " + this.state.checked);
               }}
               onClick={() => {
                 if (
                   validEmail === true &&
                   validPassword === true &&
-                  this.state.cSelected.includes(1) === true
+                  this.state.cSelected.includes(1)
                 ) {
                   alert("User account has been successfully deleted.");
                   this.props.onDeleteAccount(accountEmail);

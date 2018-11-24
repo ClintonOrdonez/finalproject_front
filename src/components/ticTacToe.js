@@ -67,12 +67,12 @@ class TicTacToe extends Component {
   }
 
   handleClick = squareNum => {
-    // console.log(squareNum);
+    console.log(squareNum);
     let currentSquares = this.state.squares;
     if (currentSquares[squareNum] || checkWinner(currentSquares)) {
       return;
     }
-    currentSquares[squareNum] = this.state.xIsNext ? "X" : "O";
+    currentSquares[squareNum] = this.state.xIsNext ? " X " : " O ";
     this.setState({
       square: currentSquares,
       xIsNext: !this.state.xIsNext

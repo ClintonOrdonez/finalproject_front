@@ -1,7 +1,6 @@
 import {
   USER_LOGIN,
   USER_LOGOUT,
-  USER_UPDATE_TICTACTOE_STATS,
   USER_UPDATE_THEME,
   USER_UPDATE_PASSWORD,
   USER_RESET_PASSWORD
@@ -33,7 +32,6 @@ export const UserLogin = (email, password) => {
           UserLoginSuccess(
             response.data.email,
             response.data._id,
-            response.data.ticTacToeStats,
             response.data.theme
           )
         );
@@ -45,12 +43,11 @@ export const UserLogin = (email, password) => {
   };
 };
 
-export const UserLoginSuccess = (email, token, ticTacToeStats, theme) => {
+export const UserLoginSuccess = (email, token, theme) => {
   return {
     type: USER_LOGIN,
     email: email,
     token: token,
-    ticTacToeStats: ticTacToeStats,
     theme: theme
   };
 };
@@ -97,32 +94,6 @@ export const UserCheckPassword = (email, password) => {
       .catch(error => {
         throw error;
       });
-  };
-};
-
-export const UserUpdateTicTacToeStats = (email, games, xWins, oWins, draws) => {
-  return dispatch => {
-    return axios
-      .put(userURL + "/updateTicTacToeStats", {
-        email: email,
-        games: games,
-        xWins: xWins,
-        oWins: oWins,
-        draws: draws
-      })
-      .then(response => {
-        dispatch(UserUpdateTicTacToeStatsSuccess(response.data.ticTacToeStats));
-      })
-      .catch(error => {
-        throw error;
-      });
-  };
-};
-
-export const UserUpdateTicTacToeStatsSuccess = ticTacToeStats => {
-  return {
-    type: USER_UPDATE_TICTACTOE_STATS,
-    ticTacToeStats: ticTacToeStats
   };
 };
 
@@ -189,7 +160,7 @@ export const UserApplyTheme = theme => {
         );
       };
     case 3:
-      return dispatch => {
+      return dipsatch => {
         document.documentElement.style.setProperty("--color1", "#fff");
         document.documentElement.style.setProperty(
           "--color2",
@@ -214,21 +185,12 @@ export const UserApplyTheme = theme => {
       };
     case 4:
       return dispatch => {
-        document.documentElement.style.setProperty("--color1", "red");
-        document.documentElement.style.setProperty("--color2", "green");
-        document.documentElement.style.setProperty("--color3", "blue");
-        document.documentElement.style.setProperty(
-          "--color4",
-          "rgba(255, 255, 0, 0.5)"
-        );
-        document.documentElement.style.setProperty(
-          "--color5",
-          "rgba(0, 255, 255, 0.5)"
-        );
-        document.documentElement.style.setProperty(
-          "--color6",
-          "rgba(255, 0, 255, 0.25)"
-        );
+        document.documentElement.style.setProperty("--color1", "yellow");
+        document.documentElement.style.setProperty("--color2", "red");
+        document.documentElement.style.setProperty("--color3", "orange");
+        document.documentElement.style.setProperty("--color4", "green");
+        document.documentElement.style.setProperty("--color5", "purple");
+        document.documentElement.style.setProperty("--color6", "blue");
       };
     default:
       return dispatch => {

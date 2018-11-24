@@ -53,98 +53,116 @@ class Theme extends Component {
           {/* {Light Theme} */}
           <Button
             onClick={() => {
-              this.onRadioBtnClick(theme1);
-              this.props.onUpdateTheme(email, theme1);
-              // document.documentElement.style.setProperty("--color1", "#000");
-              // document.documentElement.style.setProperty("--color2", "#eee");
-              // document.documentElement.style.setProperty("--color3", "#ccc");
-              // document.documentElement.style.setProperty(
-              //   "--color4",
-              //   "rgba(255, 255, 255, 0.5)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color5",
-              //   "rgba(0, 0, 0, 0.5)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color6",
-              //   "rgba(0, 0, 0, 0.25)"
-              // );
+              // this.onRadioBtnClick(theme1);
+              // this.props.onUpdateTheme(email, theme1);
+              document.documentElement.style.setProperty("--color1", "#000");
+              document.documentElement.style.setProperty("--color2", "#eee");
+              document.documentElement.style.setProperty("--color3", "#ccc");
+              document.documentElement.style.setProperty(
+                "--color4",
+                "rgba(255, 255, 255, 0.5)"
+              );
+              document.documentElement.style.setProperty(
+                "--color5",
+                "rgba(0, 0, 0, 0.5)"
+              );
+              document.documentElement.style.setProperty(
+                "--color6",
+                "rgba(0, 0, 0, 0.25)"
+              );
             }}
             active={this.state.rSelected === theme1}
           >
-            Light
+            Light Theme
           </Button>
           {/* {Dark Theme} */}
           <Button
             onClick={() => {
-              this.onRadioBtnClick(theme2);
-              this.props.onUpdateTheme(email, theme2);
-              // document.documentElement.style.setProperty("--color1", "#fff");
-              // document.documentElement.style.setProperty("--color2", "#111");
-              // document.documentElement.style.setProperty("--color3", "#333");
-              // document.documentElement.style.setProperty(
-              //   "--color4",
-              //   "rgba(0, 0, 0, 0.5)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color5",
-              //   "rgba(255, 255, 255, 0.5)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color6",
-              //   "rgba(255, 255, 255, 0.25)"
-              // );
+              // this.onRadioBtnClick(theme2);
+              // this.props.onUpdateTheme(email, theme2);
+              document.documentElement.style.setProperty(
+                "--color1",
+                "rgb(255, 255, 255)"
+              );
+              document.documentElement.style.setProperty(
+                "--color2",
+                "rgb(0, 0, 255)"
+              );
+              document.documentElement.style.setProperty(
+                "--color3",
+                "rgb(255, 0, 0)"
+              );
+              document.documentElement.style.setProperty("--color4", "teal");
+              document.documentElement.style.setProperty(
+                "--color5",
+                "rgba(0, 0, 0, 0.5)"
+              );
+              document.documentElement.style.setProperty(
+                "--color6",
+                "rgba(255, 255, 255)"
+              );
             }}
             active={this.state.rSelected === theme2}
           >
-            Dark
+            Superman Theme
           </Button>
           {/* {Extra Theme} */}
           <Button
             onClick={() => {
-              this.onRadioBtnClick(theme3);
-              this.props.onUpdateTheme(email, theme3);
-              // document.documentElement.style.setProperty("--color1", "#fff");
-              // document.documentElement.style.setProperty(
-              //   "--color2",
-              //   "rgb(249, 251, 253)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color3",
-              //   "rgb(53, 0, 50)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color4",
-              //   "0.05rem solid rgb(255, 255, 255)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color5",
-              //   "90deg, rgb(0, 0, 0)"
-              // );
-              // document.documentElement.style.setProperty(
-              //   "--color6",
-              //   "rgb(53, 0, 50) 15%,"
-              // );
+              // this.onRadioBtnClick(theme3);
+              // this.props.onUpdateTheme(email, theme3);
+              document.documentElement.style.setProperty(
+                "--color1",
+                "rgb(255, 255, 255)"
+              );
+              document.documentElement.style.setProperty(
+                "--color2",
+                "rgb(0, 255, 255)"
+              );
+              document.documentElement.style.setProperty(
+                "--color3",
+                "rgb(255, 0, 191)"
+              );
+              document.documentElement.style.setProperty("--color4", "black");
+              document.documentElement.style.setProperty(
+                "--color5",
+                "rgba(0, 0, 0, 0.5)"
+              );
+              document.documentElement.style.setProperty(
+                "--color6",
+                "rgba(0, 0, 0, 0.25)"
+              );
             }}
             active={this.state.rSelected === theme3}
           >
-            Theme 3
+            Unicorn Theme
           </Button>
           <Button
             onClick={() => {
-              this.onRadioBtnClick(theme4);
-              this.props.onUpdateTheme(email, theme4);
-              // document.documentElement.style.setProperty("--color1", "yellow");
-              // document.documentElement.style.setProperty("--color2", "red");
-              // document.documentElement.style.setProperty("--color3", "orange");
-              // document.documentElement.style.setProperty("--color4", "green");
-              // document.documentElement.style.setProperty("--color5", "purple");
-              // document.documentElement.style.setProperty("--color6", "blue");
+              // this.onRadioBtnClick(theme4);
+              // this.props.onUpdateTheme(email, theme4);
+              document.documentElement.style.setProperty("--color1", "white");
+              document.documentElement.style.setProperty(
+                "--color2",
+                "rgb(255,0,0)"
+              );
+              document.documentElement.style.setProperty(
+                "--color3",
+                "rgb(0,0,0)"
+              );
+              document.documentElement.style.setProperty("--color4", "red");
+              document.documentElement.style.setProperty(
+                "--color5",
+                "rgba(255, 0, 0, 0.5)"
+              );
+              document.documentElement.style.setProperty(
+                "--color6",
+                "rgba(255, 0, 0, 0.25)"
+              );
             }}
             active={this.state.rSelected === theme4}
           >
-            Theme 4
+            Diablo Theme
           </Button>
         </ButtonGroup>
       </div>
