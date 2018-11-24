@@ -8,8 +8,8 @@ import {
 } from "./types";
 import axios from "axios";
 
-// let userURL = "http://localhost:8080/user";
-let userURL = "https://team-gestalt-server.herokuapp.com/user";
+let userURL = "http://localhost:8080/user";
+// let userURL = "https://team-gestalt-server.herokuapp.com/user";
 
 export const UserSignup = (email, password) => {
   return dispatch => {
